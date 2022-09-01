@@ -11,7 +11,6 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.materialIcon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -32,7 +31,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    CuadroCompose(modifier = Modifier.fillMaxSize())
+                    CuadroCompose()
                 }
             }
         }
@@ -40,7 +39,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun CuadroCompose(modifier: Modifier)
+fun CuadroCompose()
 {
     val focusManager = LocalFocusManager.current
 
@@ -102,6 +101,6 @@ fun CuadroTexto(
 @Composable
 fun DefaultPreview() {
     PrestamosPersonalesTheme {
-        CuadroCompose(modifier = Modifier.fillMaxSize())
+        CuadroCompose()
     }
 }
