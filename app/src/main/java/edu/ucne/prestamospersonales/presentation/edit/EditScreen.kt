@@ -70,10 +70,6 @@ fun EditScreen(
     )
 }
 
-fun validar(){
-
-}
-
 @Composable
 fun EditBottomBar(
     modifier: Modifier = Modifier,
