@@ -1,13 +1,18 @@
 package edu.ucne.prestamospersonales.presentation.edit
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
@@ -55,12 +60,18 @@ fun EditScreen(
         },
 
         bottomBar = {
+
             EditBottomBar(
+
                 onInsertOcupacion = { viewModel.onEvent(EditEvent.InsertOcupacion)}
             )
         }
 
     )
+}
+
+fun validar(){
+
 }
 
 @Composable
@@ -71,9 +82,15 @@ fun EditBottomBar(
     OutlinedButton(
         modifier = modifier
             .fillMaxWidth()
-            .padding(horizontal = 10.dp, vertical = 14.dp),
-        onClick = { onInsertOcupacion() }
+            .padding(horizontal = 10.dp, vertical = 18.dp),
+            shape = CircleShape,
+            border= BorderStroke(1.dp, Color.Green),
+            onClick = { onInsertOcupacion() }
     ) {
+        Icon(
+            Icons.Default.Add,
+            contentDescription = null
+        )
         Text(text = stringResource(id = R.string.addOcupacion))
     }
 }

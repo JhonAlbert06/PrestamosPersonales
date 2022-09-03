@@ -19,11 +19,11 @@ class OcupacionReposImpl @Inject constructor(
     }
 
     override fun getOcupaciones(): Flow<List<Ocupacion>> {
-        return getOcupaciones()
+        return dao.getOcupaciones()
     }
 
     override suspend fun getOcupacionesById(id: Int): Ocupacion? {
-        return getOcupacionesById(id)
+        return dao.getOcupacionesById(id)
     }
 
 }
