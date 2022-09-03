@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">PrestamosPersonales</string>
+    <string name="Ocupaciones">Ocupaciones</string>
+    <string name="addOcupacion">Add Ocupacion</string>
+    <string name="Descripcion">Descripción</string>
+    <string name="Salario">Salario</string>
 </resources>
