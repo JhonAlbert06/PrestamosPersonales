@@ -98,7 +98,7 @@ fun ScreenOcupaciones()
             onClick = { },
             modifier = Modifier.fillMaxWidth().padding(18.dp),
             shape = CircleShape,
-            border= BorderStroke(1.dp, Color.Blue)
+            border= BorderStroke(1.dp, Color.Gray)
 
         ) {
             Icon(
@@ -108,7 +108,7 @@ fun ScreenOcupaciones()
             Text(
                 text = "Guardar",
                 fontWeight = FontWeight.Bold,
-                fontSize = 20.sp
+                fontSize = 20.sp,
             )
         }
     }
