@@ -16,11 +16,11 @@ interface OcupacionDao {
     suspend fun deleteOcupacion(Ocupacion: Ocupacion)
 
     //Sacar todas las Ocupaciones de la tabla Ocupaciones
-    @Query("SELECT * FROM Ocupacion")
+    @Query("SELECT * FROM Ocupaciones")
     fun getOcupaciones(): Flow<List<Ocupacion>>
 
     //Sacar Ocupacion por ID
-    @Query("SELECT * FROM Ocupacion WHERE OcupacionId = :id")
+    @Query("SELECT * FROM Ocupaciones WHERE OcupacionId = :id")
     suspend fun getOcupacionesById(id:Int): Ocupacion?
 
 }

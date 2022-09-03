@@ -3,7 +3,6 @@ package edu.ucne.prestamospersonales.domain.model
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-
 @Entity(tableName = "Ocupaciones")
 data class Ocupacion(
 
