@@ -1,3 +1,3 @@
 package edu.ucne.prestamospersonales.utils
 
-const val DATABASE = "PrestamosP_db"
+const val DATABASE_NAME = "PrestamosP_db"

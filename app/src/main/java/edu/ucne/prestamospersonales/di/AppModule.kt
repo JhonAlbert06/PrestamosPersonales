@@ -11,6 +11,7 @@ import edu.ucne.prestamospersonales.data.local.OcupacionDB
 import edu.ucne.prestamospersonales.data.repository.OcupacionReposImpl
 import edu.ucne.prestamospersonales.domain.repository.OcupacionRepository
 import edu.ucne.prestamospersonales.utils.DATABASE
+import edu.ucne.prestamospersonales.utils.DATABASE_NAME
 import javax.inject.Singleton
 
 @Module
@@ -22,7 +23,7 @@ object AppModule {
     fun providePrestamosPersonales(app: Application) = Room.databaseBuilder(
         app,
         OcupacionDB::class.java,
-        DATABASE
+        DATABASE_NAME
     ).build()
 
     @Provides
