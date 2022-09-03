@@ -10,7 +10,6 @@ import dagger.hilt.components.SingletonComponent
 import edu.ucne.prestamospersonales.data.local.OcupacionDB
 import edu.ucne.prestamospersonales.data.repository.OcupacionReposImpl
 import edu.ucne.prestamospersonales.domain.repository.OcupacionRepository
-import edu.ucne.prestamospersonales.utils.DATABASE
 import edu.ucne.prestamospersonales.utils.DATABASE_NAME
 import javax.inject.Singleton
 
