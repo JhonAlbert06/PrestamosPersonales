@@ -1,5 +1,6 @@
 package edu.ucne.prestamospersonales.presentation.edit
 
+
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -18,20 +19,24 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import edu.ucne.prestamospersonales.R
 import edu.ucne.prestamospersonales.presentation.edit.components.OcupacionInputText
 import kotlinx.coroutines.flow.collectLatest
+import java.lang.NumberFormatException
+
 
 @Composable
 fun EditScreen(
     navController: NavController,
-    viewModel: EditViewModel = hiltViewModel()
+    viewModel: EditViewModel = hiltViewModel(),
 ){
     val descripcionState = viewModel.descripcion.value
     val salarioState = viewModel.salario.value
+    var error = false
 
     LaunchedEffect(key1 = true){
         viewModel.eventFlow.collectLatest { event ->
@@ -52,18 +57,16 @@ fun EditScreen(
         },
 
         content = {
-            EditConten(
+            error = Validacion(
                 descripcion = descripcionState.text,
                 salario = salarioState.text,
-                onEvent = { viewModel.onEvent(it) }
-            )
+                onEvent = { viewModel.onEvent(it) })
         },
 
         bottomBar = {
-
             EditBottomBar(
-
-                onInsertOcupacion = { viewModel.onEvent(EditEvent.InsertOcupacion)}
+                onInsertOcupacion = { viewModel.onEvent(EditEvent.InsertOcupacion)},
+                isError = error
             )
         }
 
@@ -73,7 +76,8 @@ fun EditScreen(
 @Composable
 fun EditBottomBar(
     modifier: Modifier = Modifier,
-    onInsertOcupacion: () -> Unit
+    onInsertOcupacion: () -> Unit,
+    isError: Boolean
 ) {
     OutlinedButton(
         modifier = modifier
@@ -81,7 +85,9 @@ fun EditBottomBar(
             .padding(horizontal = 10.dp, vertical = 18.dp),
             shape = CircleShape,
             border= BorderStroke(1.dp, Color.Green),
-            onClick = { onInsertOcupacion() }
+            onClick = { onInsertOcupacion() },
+            enabled = isError
+
     ) {
         Icon(
             Icons.Default.Add,
@@ -95,6 +101,10 @@ fun EditBottomBar(
 fun EditConten(
     descripcion: String,
     salario: String,
+    isErrorDescription: Boolean = false,
+    isErrorSalario: Boolean = false,
+    errorMsgDescripcion: String = "",
+    errorMsgSalario: String = "",
     onEvent: (EditEvent) -> Unit
 ) {
     Column(
@@ -105,6 +115,8 @@ fun EditConten(
         Spacer(modifier = Modifier.height(44.dp))
 
         OcupacionInputText(
+            isError = isErrorDescription,
+            errorMsg= errorMsgDescripcion,
             text = descripcion,
             hint = stringResource(id = R.string.Descripcion),
             onTextChange = {onEvent(EditEvent.EnteredDescripcion(it))} ,
@@ -118,6 +130,8 @@ fun EditConten(
         )
 
         OcupacionInputText(
+            isError = isErrorSalario,
+            errorMsg= errorMsgSalario,
             text = salario,
             hint = stringResource(id = R.string.Salario),
             onTextChange = {onEvent(EditEvent.EnteredSalario(it))} ,
@@ -146,4 +160,70 @@ fun EditTopBar(topAppBarText: String) {
         },
         backgroundColor = MaterialTheme.colors.surface
     )
+}
+
+@Preview(showSystemUi = true)
+@Composable
+fun PrevieScreen(){
+
+    Validacion(
+        descripcion = "",
+        salario = "",
+        onEvent = { }
+    )
+
+}
+
+fun isNumeric(aux: String): Boolean{
+    return try{
+        aux.toDouble()
+        true
+    }catch(e: NumberFormatException){
+        false
+    }
+}
+
+@Composable
+fun Validacion(
+    descripcion: String,
+    salario: String,
+    onEvent: (EditEvent) -> Unit
+) : Boolean{
+    var isErrorDescrition = false
+    var isErrorSalario = false
+
+    var errorDescripcion = ""
+    var errorSalario = ""
+
+    if (descripcion.length < 5 && descripcion.isNotEmpty()){
+        isErrorDescrition = true;
+        errorDescripcion = "Caracteres insuficientes Mínimo, (5)";
+    }else if (descripcion.isEmpty()){
+        isErrorDescrition = true;
+        errorDescripcion = "*Campo Obligatorio*";
+    }else if (!(descripcion.any{it.isLetter()})){
+        isErrorDescrition = true;
+        errorDescripcion = "Descripcion no valida";
+    }
+
+
+    if (salario.isEmpty()){
+        isErrorSalario = true
+        errorSalario = "*Campo Obligatorio*"
+    }else if( !isNumeric(salario)) {
+        isErrorSalario = true
+        errorSalario = "No es una cantidad valida"
+    }
+
+    EditConten(
+        descripcion = descripcion,
+        salario = salario,
+        isErrorDescription= isErrorDescrition,
+        isErrorSalario= isErrorSalario,
+        errorMsgDescripcion = errorDescripcion,
+        errorMsgSalario = errorSalario,
+        onEvent = {onEvent(it)}
+    )
+
+    return !(isErrorDescrition || isErrorSalario)
 }
