@@ -10,6 +10,6 @@ import edu.ucne.prestamospersonales.data.model.Ocupacion
     version = 1
 )
 
-abstract class OcupacionDB : RoomDatabase() {
+abstract class AppDataBase : RoomDatabase() {
     abstract val ocupacionDao: OcupacionDao
 }
