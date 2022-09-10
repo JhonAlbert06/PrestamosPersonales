@@ -188,7 +188,6 @@ fun Validacion(
         errorDescripcion = "Descripcion no valida";
     }
 
-
     if (salario.isEmpty()){
         isErrorSalario = true
         errorSalario = "*Campo Obligatorio*"
