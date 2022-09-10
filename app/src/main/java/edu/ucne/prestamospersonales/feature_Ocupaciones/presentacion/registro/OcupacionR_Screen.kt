@@ -9,6 +9,7 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -20,15 +21,16 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import edu.ucne.prestamospersonales.R
 import edu.ucne.prestamospersonales.components.InputText
 import java.lang.NumberFormatException
 
 
 @Composable
-fun EditScreen(
-    onNavigateBack: () -> Unit,
-    viewModel: OcupacionViewModel = hiltViewModel(),
+fun OcupacionR_Screen(
+    navController: NavController,
+    viewModel: OcupacionR_ViewModel = hiltViewModel(),
 ){
     val descripcionState = viewModel.descripcion
     val salarioState = viewModel.salario
@@ -92,7 +94,7 @@ fun EditConten(
     isErrorSalario: Boolean = false,
     errorMsgDescripcion: String = "",
     errorMsgSalario: String = "",
-    viewModel: OcupacionViewModel
+    viewModel: OcupacionR_ViewModel
 ) {
     Column(
         modifier = Modifier.fillMaxWidth()
@@ -153,7 +155,7 @@ fun EditTopBar(topAppBarText: String) {
 @Composable
 fun PrevieScreen(){
 
-    EditScreen(onNavigateBack = { /*TODO*/ })
+
 }
 
 fun isNumeric(aux: String): Boolean{
@@ -169,7 +171,7 @@ fun isNumeric(aux: String): Boolean{
 fun validacion(
     descripcion: String,
     salario: String,
-    viewModel: OcupacionViewModel
+    viewModel: OcupacionR_ViewModel
 ) : Boolean{
     var isErrorDescrition = false
     var isErrorSalario = false

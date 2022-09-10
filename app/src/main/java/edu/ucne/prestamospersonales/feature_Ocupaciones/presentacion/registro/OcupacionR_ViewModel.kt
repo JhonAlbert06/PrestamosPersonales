@@ -10,7 +10,7 @@ import edu.ucne.prestamospersonales.feature_Ocupaciones.domain.repository.Ocupac
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class OcupacionViewModel @Inject constructor(
+class OcupacionR_ViewModel @Inject constructor(
     val repository: OcupacionRepository
 ) : ViewModel() {
 
