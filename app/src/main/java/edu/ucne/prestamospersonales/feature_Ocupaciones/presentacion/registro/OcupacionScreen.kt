@@ -43,7 +43,7 @@ fun EditScreen(
         },
 
         content = {
-            error = Validacion(
+            error = validacion(
                 descripcion = descripcionState,
                 salario = salarioState,
                 viewModel = viewModel
@@ -166,7 +166,7 @@ fun isNumeric(aux: String): Boolean{
 }
 
 @Composable
-fun Validacion(
+fun validacion(
     descripcion: String,
     salario: String,
     viewModel: OcupacionViewModel
