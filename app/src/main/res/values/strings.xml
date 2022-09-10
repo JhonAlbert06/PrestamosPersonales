@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">PrestamosPersonales</string>
+    <string name="addPersona">Añadir Pesona</string>
 </resources>
