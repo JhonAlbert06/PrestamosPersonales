@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface OcupacionRepository {
 
-    suspend fun inser(ocupacion: Ocupacion)
+    suspend fun insert(ocupacion: Ocupacion)
 
     suspend fun delete(ocupacion: Ocupacion)
 
