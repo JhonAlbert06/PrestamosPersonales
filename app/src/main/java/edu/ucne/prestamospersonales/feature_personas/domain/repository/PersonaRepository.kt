@@ -1,4 +1,4 @@
-package edu.ucne.prestamospersonales.data.repository
+package edu.ucne.prestamospersonales.feature_personas.domain.repository
 
 import edu.ucne.prestamospersonales.data.model.Persona
 import kotlinx.coroutines.flow.Flow
