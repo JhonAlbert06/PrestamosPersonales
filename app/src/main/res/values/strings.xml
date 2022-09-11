@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">PrestamosPersonales</string>
-    <string name="addPersona">Añadir Pesona</string>
+    <string name="addPersona">Añadir Persona</string>
+    <string name="Nombres">Nombres</string>
+    <string name="Telefono">Teléfono</string>
+    <string name="Celular">Celular</string>
+    <string name="Email">Email</string>
+    <string name="Direccion">dirección</string>
+    <string name="FechaNacimiento">Fecha de Nacimiento</string>
+    <string name="Ocupacion">Ocupación</string>
 </resources>
