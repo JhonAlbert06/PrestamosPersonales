@@ -26,12 +26,7 @@ fun InputText(
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .padding(start = 16.dp, end = 16.dp, bottom = 16.dp)
-            .padding(
-                bottom = if (isError){
-                    0.dp
-                }else{10.dp}
-            )
+            .padding(start = 16.dp, end = 16.dp, bottom = if (isError){3.dp} else{10.dp})
     ) {
 
         OutlinedTextField(
