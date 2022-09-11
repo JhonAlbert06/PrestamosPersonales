@@ -8,8 +8,10 @@ data class Persona(
     @PrimaryKey(autoGenerate = true)
     val personaId: Int? = null,
     val nombres: String = "",
+
     val telefono: Int = 0,
     val celular: Int = 0,
+
     val email: String = "",
     val direccion: String = "",
     val fechaNacimiento: String = "",
