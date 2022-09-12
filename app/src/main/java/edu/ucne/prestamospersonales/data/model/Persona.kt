@@ -9,8 +9,8 @@ data class Persona(
     val personaId: Int? = null,
     val nombres: String = "",
 
-    val telefono: Int = 0,
-    val celular: Int = 0,
+    val telefono: Long = 0,
+    val celular: Long = 0,
 
     val email: String = "",
     val direccion: String = "",
