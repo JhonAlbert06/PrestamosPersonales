@@ -2,23 +2,31 @@ package edu.ucne.prestamospersonales.feature_personas.presentation.components
 
 import android.app.DatePickerDialog
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.Icon
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.OutlinedButton
 import androidx.compose.material.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester.Companion.createRefs
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.constraintlayout.widget.ConstraintLayout
 import edu.ucne.prestamospersonales.R
 import java.util.*
 
 
 @Composable
-fun ElijeFecha() : String {
+fun ElijeFecha(): String {
 
     val calendario = Calendar.getInstance()
     val Año = calendario.get(Calendar.YEAR)
@@ -38,13 +46,45 @@ fun ElijeFecha() : String {
         }, Año, Mes, Dia
     )
 
-    OutlinedButton(
+    /*OutlinedButton(
         modifier = Modifier.fillMaxWidth(),
         onClick = { datePickerDialog.show() },
-        border = BorderStroke(2.dp, Color.Gray),) {
+        border = BorderStroke(2.dp, Color.Gray),
+    ) {
         Text(text = stringResource(id = R.string.FechaNacimiento))
+    }*/
+
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 10.dp, start = 16.dp, end = 16.dp)
+            .border(1.dp, MaterialTheme.colors.onSurface.copy(alpha = 0.5f))
+            .clickable {
+                datePickerDialog.show()
+            }
+    ) {
+
+        Box{
+            Icon(
+                imageVector = Icons.Default.DateRange,
+                contentDescription = null,
+                modifier = Modifier.fillMaxWidth().wrapContentSize(Alignment.BottomEnd)
+                    .size(50.dp, 60.dp),
+                tint = MaterialTheme.colors.onSurface
+            )
+        }
+
+        Box{
+            Text(
+                modifier = Modifier.padding(16.dp),
+                text = stringResource(id = R.string.FechaNacimiento),
+                color = MaterialTheme.colors.onSurface,
+                fontWeight = FontWeight(15)
+            )
+        }
     }
 
-    Text(text = fecha)
-    return  fecha
+
+
+    return fecha
 }

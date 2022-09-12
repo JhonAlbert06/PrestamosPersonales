@@ -10,7 +10,9 @@ import androidx.compose.material.DropdownMenuItem
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import edu.ucne.prestamospersonales.R
 import edu.ucne.prestamospersonales.data.model.Ocupacion
 
 @Composable
@@ -29,6 +31,8 @@ fun TextBox() : Int? {
     )
 
     Column(Modifier.padding(10.dp)) {
+
+        Text(text = stringResource(id = R.string.Ocupaciones))
 
         OutlinedTextField(
             value = ocupacionSelected,
