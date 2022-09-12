@@ -16,19 +16,21 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    val repository: PersonaRepositoryImpl
+    private val deletePersona: Delete,
+    getAll: GetAll
 ): ViewModel() {
+
     var personasList: List<Persona> = emptyList()
 
     init{
-        repository.getAll().onEach { personas ->
+        getAll().onEach { personas ->
             personasList = personas
         }.launchIn(viewModelScope)
     }
 
     fun delete(persona: Persona) {
         viewModelScope.launch {
-            repository.delete(persona)
+            deletePersona(persona)
         }
     }
 

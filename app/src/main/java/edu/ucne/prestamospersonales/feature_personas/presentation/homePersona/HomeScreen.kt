@@ -1,5 +1,6 @@
 package edu.ucne.prestamospersonales.feature_personas.presentation.homePersona
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -24,17 +25,20 @@ fun HomeScreen(
     navController: NavController,
     viewModel: HomeViewModel = hiltViewModel()
 ){
-    val state = viewModel
 
     Scaffold(
+
         topBar = {
             HomeTopBar()
         },
+
+
         floatingActionButton = {
             HomeFab(
                 onFacClicked = { navController.navigate(Screen.EditPersona.route) }
             )
         },
+
         content = { innerPadding ->
             HomeContent(
                 modifier = Modifier.padding(innerPadding),
@@ -44,7 +48,7 @@ fun HomeScreen(
                         route = Screen.EditPersona.passId(it)
                     )
                 },
-                personas = state.personasList,
+                personas = viewModel.personasList,
             )
         }
     )
