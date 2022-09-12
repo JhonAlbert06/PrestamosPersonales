@@ -10,11 +10,11 @@ class PersonaRepositoryImpl @Inject constructor(
 ): PersonaRepository {
 
     override suspend fun insert(persona: Persona) {
-        dao.insert(persona)
+         dao.insert(persona)
     }
 
     override suspend fun delete(persona: Persona) {
-        dao.delete(persona)
+         dao.delete(persona)
     }
 
     override suspend fun getById(id: Int): Persona? {
