@@ -7,6 +7,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import edu.ucne.prestamospersonales.data.AppDataBase
+import edu.ucne.prestamospersonales.feature_personas.domain.repository.PersonaRepository
 import edu.ucne.prestamospersonales.feature_personas.domain.repository.PersonaRepositoryImpl
 import edu.ucne.prestamospersonales.utils.DATABASE_NAME
 import javax.inject.Singleton
@@ -25,8 +26,9 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideRepository(db: AppDataBase): PersonaRepositoryImpl{
+    fun provideRepository(db: AppDataBase): PersonaRepository {
         return PersonaRepositoryImpl(db.personaDao)
     }
+
 
 }
