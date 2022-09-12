@@ -46,14 +46,13 @@ fun EditScreen(
             )
         },
 
-        content = {it
+        content = {
             error = validacion(viewModel)
-            //EditConten(viewModel)
         },
 
         bottomBar = {
             EditBottomBar(
-                onInsertOcupacion = { viewModel.save() },
+                onInsertPersona = { viewModel.save() },
                 isError = error
             )
         }
@@ -61,10 +60,11 @@ fun EditScreen(
     )
 }
 
+
 @Composable
 fun EditBottomBar(
     modifier: Modifier = Modifier,
-    onInsertOcupacion: () -> Unit,
+    onInsertPersona: () -> Unit,
     isError: Boolean
 ) {
     OutlinedButton(
@@ -73,7 +73,7 @@ fun EditBottomBar(
             .padding(horizontal = 10.dp, vertical = 18.dp),
         shape = CircleShape,
         border = BorderStroke(1.dp, Color.Green),
-        onClick = { onInsertOcupacion() },
+        onClick = { onInsertPersona() },
         enabled = isError
 
     ) {
@@ -88,11 +88,12 @@ fun EditBottomBar(
 @Composable
 fun EditConten(
     viewModel: EditViewModel,
-    isErrorNombres: Boolean = false,
-    isErrorTelefono: Boolean = false,
-    isErrorCelular: Boolean =  false,
-    isErrorEmail: Boolean =  false,
-    isErrorDireccion: Boolean = false,
+    isErrorNombres: Boolean,
+    isErrorTelefono: Boolean,
+    isErrorCelular: Boolean,
+    isErrorEmail: Boolean,
+    isErrorDireccion: Boolean,
+
     errorMgsNombres: String = "",
     errorMgsTelefono: String = "",
     errorMgsCelular: String = "",
@@ -186,7 +187,9 @@ fun EditConten(
                 .fillMaxWidth()
                 .padding(2.dp)
         ) {
+
             viewModel.fechaNacimiento = ElijeFecha()
+
             viewModel.ocupacionId = TextBox().toString()
         }
 
@@ -237,16 +240,15 @@ fun validacion(viewModel: EditViewModel): Boolean {
     // Validacion de Nombres
 
 
-
     if (viewModel.telefono.isEmpty()) {
-        isErrorCelular = true
-        errorCelular = "*Campo Obligatorio*"
+        isErrorTelefono = true
+        errorTelefono = "*Campo Obligatorio*"
     } else if(viewModel.telefono.length < 10 && viewModel.telefono.isNotEmpty()) {
-        isErrorCelular = true
-        errorCelular = "Minimo 10 Numeros"
+        isErrorTelefono = true
+        errorTelefono = "Minimo 10 Numeros"
     } else if(!isNumeric(viewModel.telefono)) {
-        isErrorCelular = true
-        errorCelular = "No es una Numero"
+        isErrorTelefono = true
+        errorTelefono = "No es una Numero"
     }
 
     if (viewModel.celular.isEmpty()) {
@@ -263,7 +265,7 @@ fun validacion(viewModel: EditViewModel): Boolean {
     if (viewModel.email.isBlank())
     {
         isErrorEmail = true;
-        errorEmail = "El campo esta vacio"
+        errorEmail = "*Campo Obligatorio*"
     }
     else if (
         !Patterns.EMAIL_ADDRESS
@@ -287,11 +289,13 @@ fun validacion(viewModel: EditViewModel): Boolean {
 
     EditConten(
         viewModel = viewModel,
+
         isErrorNombres = isErrorNombres,
         isErrorTelefono = isErrorTelefono,
         isErrorCelular = isErrorCelular,
         isErrorEmail = isErrorEmail,
         isErrorDireccion = isErrorDireccion,
+
         errorMgsNombres = errorNombres,
         errorMgsTelefono = errorTelefono,
         errorMgsCelular = errorCelular,
@@ -299,13 +303,7 @@ fun validacion(viewModel: EditViewModel): Boolean {
         errorMgsDireccion = errorDireccion
     )
 
-return !(
-            isErrorNombres ||
-            isErrorTelefono ||
-            isErrorCelular ||
-            isErrorEmail ||
-            isErrorDireccion
-        )
+return (true)
 }
 
 

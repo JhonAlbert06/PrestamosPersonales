@@ -5,14 +5,21 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
 import edu.ucne.prestamospersonales.data.model.Persona
-import edu.ucne.prestamospersonales.feature_personas.domain.repository.PersonaRepository
+import edu.ucne.prestamospersonales.feature_personas.domain.repository.PersonaRepositoryImpl
+import edu.ucne.prestamospersonales.feature_personas.domain.uses_cases.Delete
+import edu.ucne.prestamospersonales.feature_personas.domain.uses_cases.GetAll
+import edu.ucne.prestamospersonales.feature_personas.domain.uses_cases.GetById
+import edu.ucne.prestamospersonales.feature_personas.domain.uses_cases.Insert
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@HiltViewModel
 class EditViewModel @Inject constructor(
-    val repository: PersonaRepository
-) : ViewModel() {
+    private var insert: Insert,
+
+    ) : ViewModel() {
 
     var nombres by mutableStateOf("")
     var telefono by mutableStateOf("")
@@ -24,7 +31,7 @@ class EditViewModel @Inject constructor(
 
     fun save() {
         viewModelScope.launch {
-            repository.insert(
+            insert(
                 persona = Persona(
                     nombres = nombres,
                     telefono = telefono.toLong(),
