@@ -8,4 +8,5 @@
     <string name="Direccion">dirección</string>
     <string name="FechaNacimiento">Fecha de Nacimiento</string>
     <string name="Ocupacion">Ocupación</string>
+    <string name="Personas">Personas</string>
 </resources>
