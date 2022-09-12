@@ -1,4 +1,4 @@
-package edu.ucne.prestamospersonales.feature_personas.presentation.edit
+package edu.ucne.prestamospersonales.feature_personas.presentation.editPersona
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -27,8 +27,8 @@ class EditViewModel @Inject constructor(
             repository.insert(
                 persona = Persona(
                     nombres = nombres,
-                    telefono = telefono.toInt(),
-                    celular = celular.toInt(),
+                    telefono = telefono.toLong(),
+                    celular = celular.toLong(),
                     email =  email,
                     direccion = direccion,
                     fechaNacimiento = fechaNacimiento,

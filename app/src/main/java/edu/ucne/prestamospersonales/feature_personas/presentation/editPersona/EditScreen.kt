@@ -1,4 +1,4 @@
-package edu.ucne.prestamospersonales.feature_personas.presentation.edit
+package edu.ucne.prestamospersonales.feature_personas.presentation.editPersona
 
 
 import android.util.Patterns
@@ -46,7 +46,7 @@ fun EditScreen(
             )
         },
 
-        content = {
+        content = {it
             error = validacion(viewModel)
             //EditConten(viewModel)
         },
@@ -320,122 +320,6 @@ fun PrevieScreen() {
             color = MaterialTheme.colors.background
         ) {
 
-            var isErrorDescription: Boolean = false
-            var isErrorSalario: Boolean = false
-            var errorMsgDescripcion: String = ""
-            var errorMsgSalario: String = ""
-
-            Scaffold(
-
-                topBar = {
-                    EditTopBar(
-                        topAppBarText = stringResource(id = R.string.addPersona)
-                    )
-                },
-
-                content = {
-                    Column(
-                        modifier = Modifier.fillMaxWidth()
-                    ) {
-                        val focusManager = LocalFocusManager.current
-
-                        Spacer(modifier = Modifier.height(44.dp))
-
-                        InputText(
-                            isError = isErrorDescription,
-                            errorMsg = errorMsgDescripcion,
-                            text = "Jhon Albert",
-                            hint = stringResource(id = R.string.Nombres),
-                            onTextChange = { },
-                            keyboardOptions = KeyboardOptions(
-                                keyboardType = KeyboardType.Text,
-                                imeAction = ImeAction.Next
-                            ),
-                            keyboardActions = KeyboardActions(onNext = {
-                                focusManager.moveFocus(FocusDirection.Down)
-                            })
-                        )
-
-                        InputText(
-                            isError = isErrorSalario,
-                            errorMsg = errorMsgSalario,
-                            text = "8092907606",
-                            hint = stringResource(id = R.string.Telefono),
-                            onTextChange = { },
-                            keyboardOptions = KeyboardOptions(
-                                keyboardType = KeyboardType.Phone,
-                                imeAction = ImeAction.Next
-                            ),
-                            keyboardActions = KeyboardActions(onNext = {
-                                focusManager.moveFocus(FocusDirection.Down)
-                            })
-                        )
-
-                        InputText(
-                            isError = isErrorSalario,
-                            errorMsg = errorMsgSalario,
-                            text = "8094566132",
-                            hint = stringResource(id = R.string.Celular),
-                            onTextChange = { },
-                            keyboardOptions = KeyboardOptions(
-                                keyboardType = KeyboardType.Phone,
-                                imeAction = ImeAction.Next
-                            ),
-                            keyboardActions = KeyboardActions(onNext = {
-                                focusManager.moveFocus(FocusDirection.Down)
-                            })
-                        )
-
-                        InputText(
-                            isError = isErrorSalario,
-                            errorMsg = errorMsgSalario,
-                            text = "gjhon7778@gamil.com",
-                            hint = stringResource(id = R.string.Email),
-                            onTextChange = { },
-                            keyboardOptions = KeyboardOptions(
-                                keyboardType = KeyboardType.Email,
-                                imeAction = ImeAction.Next
-                            ),
-                            keyboardActions = KeyboardActions(onNext = {
-                                focusManager.moveFocus(FocusDirection.Down)
-                            })
-                        )
-
-                        InputText(
-                            isError = isErrorSalario,
-                            errorMsg = errorMsgSalario,
-                            text = "Calle C #31",
-                            hint = stringResource(id = R.string.Direccion),
-                            onTextChange = { },
-                            keyboardOptions = KeyboardOptions(
-                                keyboardType = KeyboardType.Text,
-                                imeAction = ImeAction.Done
-                            ),
-                            keyboardActions = KeyboardActions(onDone = {
-                                focusManager.clearFocus()
-                            })
-                        )
-
-                        Column(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(16.dp)
-                        ) {
-                            ElijeFecha()
-                            TextBox().toString()
-                        }
-
-                    }
-                },
-
-                bottomBar = {
-                    EditBottomBar(
-                        onInsertOcupacion = { },
-                        isError = false
-                    )
-                }
-
-            )
 
         }
     }
