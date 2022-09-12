@@ -1,8 +1,8 @@
 package edu.ucne.prestamospersonales.data
 
 import androidx.room.*
-import edu.ucne.prestamospersonales.data.dao.PersonaDao
-import edu.ucne.prestamospersonales.data.model.Persona
+import edu.ucne.prestamospersonales.data.dao.*
+import edu.ucne.prestamospersonales.data.model.*
 
 @Database(
     entities = [Persona::class],
