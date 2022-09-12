@@ -5,8 +5,12 @@
     <string name="Telefono">Teléfono</string>
     <string name="Celular">Celular</string>
     <string name="Email">Email</string>
-    <string name="Direccion">dirección</string>
+    <string name="Direccion">Dirección</string>
     <string name="FechaNacimiento">Fecha de Nacimiento</string>
     <string name="Ocupacion">Ocupación</string>
     <string name="Personas">Personas</string>
+    <string name="Ocupaciones">Ocupaciones</string>
+    <string name="addOcupacion">Añadir Ocupación</string>
+    <string name="Descripcion">Descripción</string>
+    <string name="Salario">Salario</string>
 </resources>
