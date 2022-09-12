@@ -6,7 +6,8 @@ import edu.ucne.prestamospersonales.data.model.Persona
 
 @Database(
     entities = [Persona::class],
-    version = 1
+    version = 1,
+    exportSchema = false
 )
 
 abstract class AppDataBase : RoomDatabase() {
