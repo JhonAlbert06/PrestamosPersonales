@@ -37,7 +37,6 @@ fun EditScreen(
     navController: NavController,
     viewModel: EditViewModel = hiltViewModel()
 ) {
-    var esError: Boolean = false
     Scaffold(
 
         topBar = {
@@ -47,13 +46,13 @@ fun EditScreen(
         },
 
         content = {
-            esError = validacion(viewModel)
+            viewModel.esCorrecto = validacion(viewModel)
         },
 
         bottomBar = {
             EditBottomBar(
                 onInsertPersona = { viewModel.save() },
-                isError = esError
+                isError = viewModel.esCorrecto
             )
         }
 

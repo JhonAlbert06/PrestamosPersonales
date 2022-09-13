@@ -22,6 +22,7 @@ class EditViewModel @Inject constructor(
 
     ) : ViewModel() {
 
+    var esCorrecto by mutableStateOf(false)
     var nombres by mutableStateOf("")
     var telefono by mutableStateOf("")
     var celular by mutableStateOf("")
