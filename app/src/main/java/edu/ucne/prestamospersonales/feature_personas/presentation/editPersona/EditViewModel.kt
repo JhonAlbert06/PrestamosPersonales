@@ -5,6 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.navArgument
 import dagger.hilt.android.lifecycle.HiltViewModel
 import edu.ucne.prestamospersonales.data.model.Persona
 import edu.ucne.prestamospersonales.feature_personas.domain.repository.PersonaRepositoryImpl

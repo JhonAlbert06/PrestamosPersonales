@@ -22,6 +22,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.core.text.isDigitsOnly
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import edu.ucne.prestamospersonales.R
@@ -36,8 +37,7 @@ fun EditScreen(
     navController: NavController,
     viewModel: EditViewModel = hiltViewModel()
 ) {
-    var error = false
-
+    var esError: Boolean = false
     Scaffold(
 
         topBar = {
@@ -47,13 +47,13 @@ fun EditScreen(
         },
 
         content = {
-            error = validacion(viewModel)
+            esError = validacion(viewModel)
         },
 
         bottomBar = {
             EditBottomBar(
                 onInsertPersona = { viewModel.save() },
-                isError = error
+                isError = esError
             )
         }
 
@@ -222,14 +222,15 @@ fun isNumeric(aux: String): Boolean {
     }
 }
 
+
 @Composable
 fun validacion(viewModel: EditViewModel): Boolean {
 
-    var isErrorNombres = false
-    var isErrorTelefono = false
-    var isErrorCelular = false
-    var isErrorEmail = false
-    var isErrorDireccion = false
+    var isErrorNombres = true
+    var isErrorTelefono = true
+    var isErrorCelular = true
+    var isErrorEmail = true
+    var isErrorDireccion = true
 
     var errorNombres = ""
     var errorTelefono = ""
@@ -237,64 +238,70 @@ fun validacion(viewModel: EditViewModel): Boolean {
     var errorEmail = ""
     var errorDireccion = ""
 
-    // Validacion de Nombres
-
+    if (viewModel.nombres.isEmpty()) {
+        isErrorNombres = false
+        errorNombres = "*Campo Obligatorio*"
+    } else if (viewModel.nombres.isDigitsOnly()) {
+        isErrorNombres = false
+        errorNombres = "Solo se permiten Caracteres"
+    } else if (!(viewModel.nombres.any { it.isLetter() })) {
+        isErrorNombres = false
+        errorNombres = "No se permiten simbolos"
+    }
 
     if (viewModel.telefono.isEmpty()) {
-        isErrorTelefono = true
+        isErrorTelefono = false
         errorTelefono = "*Campo Obligatorio*"
-    } else if(viewModel.telefono.length < 10 && viewModel.telefono.isNotEmpty()) {
-        isErrorTelefono = true
+    } else if (viewModel.telefono.length < 10 && viewModel.telefono.isNotEmpty()) {
+        isErrorTelefono = false
         errorTelefono = "Minimo 10 Numeros"
-    } else if(!isNumeric(viewModel.telefono)) {
-        isErrorTelefono = true
+    } else if (!isNumeric(viewModel.telefono)) {
+        isErrorTelefono = false
         errorTelefono = "No es una Numero"
     }
 
     if (viewModel.celular.isEmpty()) {
-        isErrorCelular = true
+        isErrorCelular = false
         errorCelular = "*Campo Obligatorio*"
-    } else if(viewModel.celular.length < 10 && viewModel.celular.isNotEmpty()) {
-        isErrorCelular = true
+    } else if (viewModel.celular.length < 10 && viewModel.celular.isNotEmpty()) {
+        isErrorCelular = false
         errorCelular = "Minimo (10) Numeros"
-    } else if(!isNumeric(viewModel.celular)) {
-        isErrorCelular = true
+    } else if (!isNumeric(viewModel.celular)) {
+        isErrorCelular = false
         errorCelular = "No es una Numero"
     }
 
-    if (viewModel.email.isBlank())
-    {
-        isErrorEmail = true;
+    if (viewModel.email.isBlank()) {
+        isErrorEmail = false
         errorEmail = "*Campo Obligatorio*"
-    }
-    else if (
+    } else if (
         !Patterns.EMAIL_ADDRESS
             .matcher(viewModel.email)
             .matches()
-    ){
-        isErrorEmail = true;
+    ) {
+        isErrorEmail = false
         errorEmail = "El Email no es valido"
     }
 
-    if (viewModel.direccion.length < 5 && viewModel.direccion.isNotEmpty()){
-        isErrorDireccion = true;
+    if (viewModel.direccion.length < 5 && viewModel.direccion.isNotEmpty()) {
+        isErrorDireccion = false
         errorDireccion = "Caracteres insuficientes Mínimo, (5)";
-    }else if (viewModel.direccion.isEmpty()){
-        isErrorDireccion = true;
+    } else if (viewModel.direccion.isEmpty()) {
+        isErrorDireccion = false
         errorDireccion = "*Campo Obligatorio*";
-    }else if (!(viewModel.direccion.any{it.isLetter()})){
-        isErrorDireccion = true;
+    } else if (!(viewModel.direccion.any { it.isLetter() })) {
+        isErrorDireccion = false
         errorDireccion = "Direccion no valida";
     }
 
     EditConten(
         viewModel = viewModel,
 
-        isErrorNombres = isErrorNombres,
-        isErrorTelefono = isErrorTelefono,
-        isErrorCelular = isErrorCelular,
-        isErrorEmail = isErrorEmail,
-        isErrorDireccion = isErrorDireccion,
+        isErrorNombres = !isErrorNombres,
+        isErrorTelefono = !isErrorTelefono,
+        isErrorCelular = !isErrorCelular,
+        isErrorEmail = !isErrorEmail,
+        isErrorDireccion = !isErrorDireccion,
 
         errorMgsNombres = errorNombres,
         errorMgsTelefono = errorTelefono,
@@ -303,9 +310,10 @@ fun validacion(viewModel: EditViewModel): Boolean {
         errorMgsDireccion = errorDireccion
     )
 
-return (true)
-}
+    var aux = (isErrorNombres && isErrorTelefono && isErrorCelular && isErrorEmail && isErrorDireccion)
 
+    return aux
+}
 
 
 @Preview(showSystemUi = true)
