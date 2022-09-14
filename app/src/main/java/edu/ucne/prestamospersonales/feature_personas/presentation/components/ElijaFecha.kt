@@ -18,6 +18,8 @@ import androidx.compose.ui.focus.FocusRequester.Companion.createRefs
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -46,14 +48,6 @@ fun ElijeFecha(): String {
         }, Año, Mes, Dia
     )
 
-    /*OutlinedButton(
-        modifier = Modifier.fillMaxWidth(),
-        onClick = { datePickerDialog.show() },
-        border = BorderStroke(2.dp, Color.Gray),
-    ) {
-        Text(text = stringResource(id = R.string.FechaNacimiento))
-    }*/
-
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -79,7 +73,7 @@ fun ElijeFecha(): String {
                 modifier = Modifier.padding(16.dp),
                 text = stringResource(id = R.string.FechaNacimiento),
                 color = MaterialTheme.colors.onSurface,
-                fontWeight = FontWeight(15)
+                fontWeight = FontWeight.Bold
             )
         }
     }
