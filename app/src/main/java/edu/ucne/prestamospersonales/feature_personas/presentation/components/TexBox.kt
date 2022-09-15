@@ -76,6 +76,6 @@ fun TextBox() : Int? {
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun preview() {
+fun Previewtexbox() {
   TextBox()
 }

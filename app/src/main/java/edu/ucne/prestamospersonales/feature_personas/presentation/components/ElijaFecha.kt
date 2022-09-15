@@ -21,6 +21,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.widget.ConstraintLayout
 import edu.ucne.prestamospersonales.R
@@ -52,7 +53,7 @@ fun ElijeFecha(): String {
         modifier = Modifier
             .fillMaxWidth()
             .padding(top = 10.dp, start = 16.dp, end = 16.dp)
-            .border(1.dp, MaterialTheme.colors.onSurface.copy(alpha = 0.5f))
+            .border(1.dp, MaterialTheme.colors.onSurface.copy(alpha = 0.2f))
             .clickable {
                 datePickerDialog.show()
             }
@@ -62,8 +63,10 @@ fun ElijeFecha(): String {
             Icon(
                 imageVector = Icons.Default.DateRange,
                 contentDescription = null,
-                modifier = Modifier.fillMaxWidth().wrapContentSize(Alignment.BottomEnd)
-                    .size(50.dp, 60.dp),
+                modifier = Modifier
+                    .fillMaxWidth().padding(3.dp)
+                    .wrapContentSize(Alignment.BottomEnd)
+                    .size(40.dp, 50.dp),
                 tint = MaterialTheme.colors.onSurface
             )
         }
@@ -81,4 +84,10 @@ fun ElijeFecha(): String {
 
 
     return fecha
+}
+
+@Preview(showSystemUi = true, showBackground = true)
+@Composable
+fun Previewfecha() {
+    ElijeFecha()
 }
