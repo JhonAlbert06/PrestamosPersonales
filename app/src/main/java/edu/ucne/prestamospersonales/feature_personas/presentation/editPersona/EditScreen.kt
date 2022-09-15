@@ -309,7 +309,8 @@ fun validacion(viewModel: EditViewModel): Boolean {
         errorMgsDireccion = errorDireccion
     )
 
-    var aux = (isErrorNombres && isErrorTelefono && isErrorCelular && isErrorEmail && isErrorDireccion)
+    var aux =
+        (isErrorNombres && isErrorTelefono && isErrorCelular && isErrorEmail && isErrorDireccion)
 
     return aux
 }
@@ -319,13 +320,123 @@ fun validacion(viewModel: EditViewModel): Boolean {
 @Composable
 fun PrevieScreen() {
     PrestamosPersonalesTheme {
-        // A surface container using the 'background' color from the theme
+
         Surface(
             modifier = Modifier.fillMaxSize(),
             color = MaterialTheme.colors.background
         ) {
+            Scaffold(
 
+                topBar = {
+                    EditTopBar(
+                        topAppBarText = stringResource(id = R.string.addPersona)
+                    )
+                },
 
+                content = {
+                    Column(
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        val focusManager = LocalFocusManager.current
+
+                        Spacer(modifier = Modifier.height(44.dp))
+
+                        InputText(
+                            isError = true,
+                            errorMsg = "errorMgsNombres",
+                            text = "viewModel.nombres",
+                            hint = stringResource(id = R.string.Nombres),
+                            onTextChange = { "viewModel.nombres = it" },
+                            keyboardOptions = KeyboardOptions(
+                                keyboardType = KeyboardType.Text,
+                                imeAction = ImeAction.Next
+                            ),
+                            keyboardActions = KeyboardActions(onNext = {
+                                focusManager.moveFocus(FocusDirection.Down)
+                            })
+                        )
+
+                        InputText(
+                            isError = true,
+                            errorMsg = "errorMgsTelefono",
+                            text = "viewModel.telefono",
+                            hint = stringResource(id = R.string.Telefono),
+                            onTextChange = { "viewModel.telefono = it" },
+                            keyboardOptions = KeyboardOptions(
+                                keyboardType = KeyboardType.Phone,
+                                imeAction = ImeAction.Next
+                            ),
+                            keyboardActions = KeyboardActions(onNext = {
+                                focusManager.moveFocus(FocusDirection.Down)
+                            })
+                        )
+
+                        InputText(
+                            isError = true,
+                            errorMsg = "errorMgsCelular",
+                            text = "viewModel.celular",
+                            hint = stringResource(id = R.string.Celular),
+                            onTextChange = { "viewModel.celular = it" },
+                            keyboardOptions = KeyboardOptions(
+                                keyboardType = KeyboardType.Phone,
+                                imeAction = ImeAction.Next
+                            ),
+                            keyboardActions = KeyboardActions(onNext = {
+                                focusManager.moveFocus(FocusDirection.Down)
+                            })
+                        )
+
+                        InputText(
+                            isError = true,
+                            errorMsg = "errorMgsEmail",
+                            text = "viewModel.email",
+                            hint = stringResource(id = R.string.Email),
+                            onTextChange = { "viewModel.email = it" },
+                            keyboardOptions = KeyboardOptions(
+                                keyboardType = KeyboardType.Email,
+                                imeAction = ImeAction.Next
+                            ),
+                            keyboardActions = KeyboardActions(onNext = {
+                                focusManager.moveFocus(FocusDirection.Down)
+                            })
+                        )
+
+                        InputText(
+                            isError = true,
+                            errorMsg = "errorMgsDireccion",
+                            text = "viewModel.direccion",
+                            hint = stringResource(id = R.string.Direccion),
+                            onTextChange = { "viewModel.direccion = it" },
+                            keyboardOptions = KeyboardOptions(
+                                keyboardType = KeyboardType.Text,
+                                imeAction = ImeAction.Done
+                            ),
+                            keyboardActions = KeyboardActions(onDone = {
+                                focusManager.clearFocus()
+                            })
+                        )
+
+                        Column(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(2.dp)
+                        ) {
+
+                            ElijeFecha()
+
+                            TextBox().toString()
+                        }
+                    }
+                },
+
+                bottomBar = {
+                    EditBottomBar(
+                        onInsertPersona = {},
+                        isError = true
+                    )
+                }
+
+            )
         }
     }
 
