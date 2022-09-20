@@ -14,7 +14,8 @@ import edu.ucne.prestamospersonales.data.models.Prestamo
         Ocupacion::class,
         Persona::class,
         Prestamo::class],
-    version = 1
+    version = 1,
+    exportSchema = false
 )
 
 abstract class AppDataBase: RoomDatabase() {
