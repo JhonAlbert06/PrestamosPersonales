@@ -11,7 +11,6 @@ import edu.ucne.prestamospersonales.data.repository.OcupacionRepositoryImpl
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-
 @HiltViewModel
 class EditOcupacionViewModel @Inject constructor(
    private val Impl: OcupacionRepositoryImpl
@@ -20,14 +19,14 @@ class EditOcupacionViewModel @Inject constructor(
     var _descripcion by mutableStateOf("")
     var _salario by mutableStateOf("")
 
-    var isErrorDescription: Boolean = false
-    var isErrorSalario: Boolean = false
-    var errorMsgDescripcion: String = ""
-    var errorMsgSalario: String = ""
+    var isErrorDescription by mutableStateOf(false)
+    var isErrorSalario by mutableStateOf(false)
+    var errorMsgDescripcion by mutableStateOf("")
+    var errorMsgSalario by mutableStateOf("")
 
-    var isError: Boolean = false
+    var isError by mutableStateOf(false)
 
-    fun Save(){
+    fun save(){
         viewModelScope.launch {
             Impl.insert(
                 Ocupacion(

@@ -42,12 +42,12 @@ fun OcupacionScreen(
         },
 
         content = {
-            Validacion(viewModel)
+            viewModel.isError = Validacion(viewModel)
         },
 
         bottomBar = {
             EditBottomBar(
-                onInsertOcupacion = { viewModel.Save()},
+                onInsertOcupacion = { viewModel.save()},
                 isError = viewModel.isError
             )
         }
@@ -156,15 +156,17 @@ fun isNumeric(aux: String): Boolean{
 }
 
 @Composable
-fun Validacion(viewModel: EditOcupacionViewModel){
+fun Validacion(viewModel: EditOcupacionViewModel): Boolean{
 
-    if (viewModel._descripcion.length < 5 && viewModel._descripcion.isNotEmpty()){
-        viewModel.isErrorDescription = true;
-        viewModel.errorMsgDescripcion = "Caracteres insuficientes Mínimo, (5)";
-    }else if (viewModel._descripcion.isEmpty()){
+    if (viewModel._descripcion.isEmpty()){
         viewModel.isErrorDescription= true;
         viewModel.errorMsgDescripcion = "*Campo Obligatorio*";
-    }else if (!(viewModel._descripcion.any{it.isLetter()})){
+    }
+    if (viewModel._descripcion.length < 5) {
+        viewModel.isErrorDescription = true;
+        viewModel.errorMsgDescripcion = "Caracteres insuficientes Mínimo, (5)";
+    }
+    if (!(viewModel._descripcion.any{it.isLetter()})){
         viewModel.isErrorDescription = true;
         viewModel.errorMsgDescripcion = "Descripcion no valida";
     }
@@ -172,11 +174,13 @@ fun Validacion(viewModel: EditOcupacionViewModel){
     if (viewModel._salario.isEmpty()){
         viewModel.isErrorSalario = true
         viewModel.errorMsgSalario = "*Campo Obligatorio*"
-    }else if( !isNumeric(viewModel._salario)) {
+    }
+    if( !isNumeric(viewModel._salario)) {
         viewModel.isErrorSalario = true
         viewModel.errorMsgSalario = "No es una cantidad valida"
     }
 
-    viewModel.isError = !(viewModel.isErrorDescription || viewModel.isErrorSalario)
     EditConten(viewModel = viewModel)
+
+    return !(viewModel.isErrorDescription || viewModel.isErrorSalario)
 }
