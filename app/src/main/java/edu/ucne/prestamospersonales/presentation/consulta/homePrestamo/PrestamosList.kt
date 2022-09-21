@@ -7,6 +7,8 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Add
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -39,7 +41,10 @@ fun PrestamosList(
             )
         },
 
+
+
         content = { innerPadding ->
+            val uiState by viewModel.uiState.collectAsState()
             HomeContent(
                 modifier = Modifier.padding(innerPadding),
                 onDeletePrestamo = {viewModel.delete(it)},
@@ -48,7 +53,7 @@ fun PrestamosList(
                         route = Screen.EditPrestamo.passId(it)
                     )
                 },
-                prestamos = viewModel.uiState.value.prestamos,
+                prestamos = uiState.prestamos ,
             )
         }
     )

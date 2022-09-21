@@ -101,7 +101,7 @@ fun PrestamoItem(
     }
 }
 
-@Preview
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun previwww() {
     PrestamoItem(prestamo = Prestamo(
@@ -109,7 +109,31 @@ fun previwww() {
         "12/03/2002",
         "12/03/2002",
         1,
-        "",
+        "Nada",
+        50000.0,
+        10000.0
+    ),
+        onEditPrestamo = { /*TODO*/ }) {
+
+    }
+    PrestamoItem(prestamo = Prestamo(
+        1,
+        "12/03/2002",
+        "12/03/2002",
+        1,
+        "Nada",
+        50000.0,
+        10000.0
+    ),
+        onEditPrestamo = { /*TODO*/ }) {
+
+    }
+    PrestamoItem(prestamo = Prestamo(
+        1,
+        "12/03/2002",
+        "12/03/2002",
+        1,
+        "Nada",
         50000.0,
         10000.0
     ),
