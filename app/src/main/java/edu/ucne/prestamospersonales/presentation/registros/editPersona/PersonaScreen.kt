@@ -174,7 +174,11 @@ fun EditConten(
                 .padding(2.dp)
         ) {
 
-            viewModel.fechaNacimiento = ElijeFecha(stringResource(id = R.string.FechaNacimiento),true,"sdsdsd")
+            viewModel.fechaNacimiento = ElijeFecha(
+                stringResource(id = R.string.FechaNacimiento),
+                true,
+                "*Campo Obligatorio*"
+            )
 
             viewModel.ocupacionId = TextBox().toString()
         }

@@ -101,8 +101,16 @@ fun EditConten(
                 .padding(2.dp)
         ) {
 
-            viewModel.fechaPrestamo = ElijeFecha("",true,"")
-            viewModel.fechaVence = ElijeFecha("",true,"")
+            viewModel.fechaPrestamo = ElijeFecha(
+                stringResource(id = R.string.FechaPrestamo),
+                true,
+                ""
+            )
+
+            viewModel.fechaVence = ElijeFecha(
+                stringResource(id = R.string.FechaVence),
+                true,
+                "")
 
             viewModel.personaId = TextBox().toString()
         }
