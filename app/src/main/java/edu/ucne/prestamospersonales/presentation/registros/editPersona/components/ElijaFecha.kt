@@ -6,7 +6,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DateRange
@@ -14,16 +13,14 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import edu.ucne.prestamospersonales.R
 import java.util.*
 
 
 @Composable
-fun ElijeFecha(nombre: String, isErrorFecha:Boolean, MgsFecha:String): String {
+fun ElijeFecha(nombre: String, isErrorFecha: Boolean, MgsFecha: String): String {
 
     val calendario = Calendar.getInstance()
     val Año = calendario.get(Calendar.YEAR)
@@ -46,7 +43,7 @@ fun ElijeFecha(nombre: String, isErrorFecha:Boolean, MgsFecha:String): String {
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .height(60.dp)
+            .height(70.dp)
             .padding(top = 10.dp, start = 16.dp, end = 16.dp)
             .border(1.dp, MaterialTheme.colors.onSurface.copy(alpha = 0.2f))
             .clickable {
@@ -54,7 +51,7 @@ fun ElijeFecha(nombre: String, isErrorFecha:Boolean, MgsFecha:String): String {
             }
     ) {
 
-        Box{
+        Box {
             Icon(
                 imageVector = Icons.Default.DateRange,
                 contentDescription = null,
@@ -67,26 +64,43 @@ fun ElijeFecha(nombre: String, isErrorFecha:Boolean, MgsFecha:String): String {
             )
         }
 
-        Box{
-            Text(
-                modifier = Modifier.padding(16.dp).fillMaxSize(),
-                text = nombre,
-                color = MaterialTheme.colors.onSurface,
-                fontWeight = FontWeight.Bold
-            )
+        Box {
+            Column {
+                Text(
+                    modifier = Modifier
+                        .padding(start = 16.dp,top = 10.dp, end = 16.dp)
+                        .fillMaxWidth(),
+                    text = nombre,
+                    color = MaterialTheme.colors.onSurface,
+                    fontWeight = FontWeight.Bold
+                )
+
+                if (fecha != "") {
+                    Text(
+                        modifier = Modifier
+                            .padding(start = 100.dp,top = 5.dp, end = 16.dp)
+                            .fillMaxWidth(),
+                        text = fecha,
+                        style = MaterialTheme.typography.caption,
+                    )
+                }
+            }
         }
+
+
 
     }
 
     if (isErrorFecha) {
         Text(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 30.dp, bottom = 16.dp, end = 16.dp),
             text = MgsFecha,
             color = MaterialTheme.colors.error,
             style = MaterialTheme.typography.caption,
-            modifier = Modifier.padding(start = 16.dp)
         )
     }
-
 
     return fecha
 }
@@ -98,8 +112,8 @@ fun Previewfecha() {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(2.dp)
+            .padding(14.dp)
     ) {
-        ElijeFecha("Nombre", true, "sssssssss")
+        ElijeFecha("Nombre", true, "*Campo Obligatorio*")
     }
 }
