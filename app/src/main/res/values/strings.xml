@@ -19,4 +19,6 @@
     <string name="Balance">Balance</string>
     <string name="FechaPrestamo">Fecha del Prestamo</string>
     <string name="FechaVence">Fecha de Vencimiento</string>
+    <string name="Persona">Persona</string>
+    <string name="Prestamos">Prestamos</string>
 </resources>
