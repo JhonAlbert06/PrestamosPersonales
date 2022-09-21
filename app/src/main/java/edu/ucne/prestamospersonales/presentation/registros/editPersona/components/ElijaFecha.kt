@@ -6,6 +6,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DateRange
@@ -22,7 +23,7 @@ import java.util.*
 
 
 @Composable
-fun ElijeFecha(): String {
+fun ElijeFecha(nombre: String, isErrorFecha:Boolean, MgsFecha:String): String {
 
     val calendario = Calendar.getInstance()
     val Año = calendario.get(Calendar.YEAR)
@@ -45,6 +46,7 @@ fun ElijeFecha(): String {
     Box(
         modifier = Modifier
             .fillMaxWidth()
+            .height(60.dp)
             .padding(top = 10.dp, start = 16.dp, end = 16.dp)
             .border(1.dp, MaterialTheme.colors.onSurface.copy(alpha = 0.2f))
             .clickable {
@@ -57,7 +59,8 @@ fun ElijeFecha(): String {
                 imageVector = Icons.Default.DateRange,
                 contentDescription = null,
                 modifier = Modifier
-                    .fillMaxWidth().padding(3.dp)
+                    .fillMaxSize()
+                    .padding(3.dp)
                     .wrapContentSize(Alignment.BottomEnd)
                     .size(40.dp, 50.dp),
                 tint = MaterialTheme.colors.onSurface
@@ -66,14 +69,23 @@ fun ElijeFecha(): String {
 
         Box{
             Text(
-                modifier = Modifier.padding(16.dp),
-                text = stringResource(id = R.string.FechaNacimiento),
+                modifier = Modifier.padding(16.dp).fillMaxSize(),
+                text = nombre,
                 color = MaterialTheme.colors.onSurface,
                 fontWeight = FontWeight.Bold
             )
         }
+
     }
 
+    if (isErrorFecha) {
+        Text(
+            text = MgsFecha,
+            color = MaterialTheme.colors.error,
+            style = MaterialTheme.typography.caption,
+            modifier = Modifier.padding(start = 16.dp)
+        )
+    }
 
 
     return fecha
@@ -82,5 +94,12 @@ fun ElijeFecha(): String {
 @Preview(showSystemUi = true, showBackground = true)
 @Composable
 fun Previewfecha() {
-    ElijeFecha()
+
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(2.dp)
+    ) {
+        ElijeFecha("Nombre", true, "sssssssss")
+    }
 }
