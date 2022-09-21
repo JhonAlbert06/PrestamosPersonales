@@ -11,9 +11,10 @@ import edu.ucne.prestamospersonales.data.repository.OcupacionRepositoryImpl
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+
 @HiltViewModel
 class EditOcupacionViewModel @Inject constructor(
-    private val Impl: OcupacionRepositoryImpl
+   private val Impl: OcupacionRepositoryImpl
 ): ViewModel() {
 
     var _descripcion by mutableStateOf("")
@@ -23,7 +24,6 @@ class EditOcupacionViewModel @Inject constructor(
     var isErrorSalario: Boolean = false
     var errorMsgDescripcion: String = ""
     var errorMsgSalario: String = ""
-
 
     var isError: Boolean = false
 
