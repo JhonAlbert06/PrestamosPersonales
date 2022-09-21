@@ -1,28 +1,29 @@
 package edu.ucne.prestamospersonales.data.repository
 
+import edu.ucne.prestamospersonales.data.AppDataBase
 import edu.ucne.prestamospersonales.data.dao.PersonaDao
 import edu.ucne.prestamospersonales.data.models.Persona
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class PersonaRepositoryImpl @Inject constructor(
-    private val dao: PersonaDao
+    private val db: AppDataBase
 ): PersonaRepository{
 
     override suspend fun insert(persona: Persona) {
-        dao.insert(persona)
+        db.personaDao.insert(persona)
     }
 
     override suspend fun delete(persona: Persona) {
-        dao.delete(persona)
+        db.personaDao.delete(persona)
     }
 
     override suspend fun getById(id: Int): Persona? {
-        return dao.getById(id)
+        return db.personaDao.getById(id)
     }
 
     override fun getAll(): Flow<List<Persona>> {
-        return dao.getAll()
+        return db.personaDao.getAll()
     }
 
 }
