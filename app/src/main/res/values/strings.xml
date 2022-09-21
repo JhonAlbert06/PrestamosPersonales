@@ -4,4 +4,13 @@
     <string name="addOcupacion">Añadir Ocupación</string>
     <string name="Descripcion">Descripción</string>
     <string name="Salario">Salario</string>
+    <string name="addPersona">Añadir Persona</string>
+    <string name="Nombres">Nombres</string>
+    <string name="Telefono">Teléfono</string>
+    <string name="Celular">Celular</string>
+    <string name="Email">Email</string>
+    <string name="Direccion">Dirección</string>
+    <string name="FechaNacimiento">Fecha de Nacimiento</string>
+    <string name="Ocupacion">Ocupación</string>
+    <string name="Personas">Personas</string>
 </resources>
