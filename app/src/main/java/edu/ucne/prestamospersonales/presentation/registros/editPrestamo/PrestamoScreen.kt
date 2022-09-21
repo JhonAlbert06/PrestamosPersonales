@@ -184,6 +184,8 @@ fun EditTopBar(topAppBarText: String) {
 fun validacion(viewModel: EditPrestamoViewModel): Boolean {
 
 
+    EditConten(viewModel = viewModel)
+
     return (true)
 }
 
