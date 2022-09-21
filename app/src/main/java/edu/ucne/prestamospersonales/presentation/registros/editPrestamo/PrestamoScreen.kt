@@ -154,10 +154,10 @@ fun EditConten(
             onTextChange = { viewModel.balance = it },
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Phone,
-                imeAction = ImeAction.Next
+                imeAction = ImeAction.Done
             ),
-            keyboardActions = KeyboardActions(onNext = {
-                focusManager.moveFocus(FocusDirection.Down)
+            keyboardActions = KeyboardActions(onDone = {
+                focusManager.clearFocus()
             })
         )
 
@@ -183,10 +183,7 @@ fun EditTopBar(topAppBarText: String) {
 
 @Composable
 fun validacion(viewModel: EditPrestamoViewModel): Boolean {
-
-
     EditConten(viewModel = viewModel)
-
     return (true)
 }
 
