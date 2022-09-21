@@ -6,6 +6,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import edu.ucne.prestamospersonales.presentation.registros.editOcupacion.OcupacionScreen
 import edu.ucne.prestamospersonales.presentation.registros.editPersona.PersonaScreen
+import edu.ucne.prestamospersonales.presentation.registros.editPrestamo.PrestamoScreen
 
 
 @Composable
@@ -13,10 +14,10 @@ fun Navigation() {
     val navController = rememberNavController()
     NavHost(
         navController = navController,
-        startDestination = Screen.EditPersona.route
+        startDestination = Screen.EditPrestamo.route
     ){
-        composable(route = Screen.EditPersona.route){
-            PersonaScreen(navController = navController)
+        composable(route = Screen.EditPrestamo.route){
+            PrestamoScreen(navController = navController)
         }
     }
 }
