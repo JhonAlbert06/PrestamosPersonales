@@ -31,6 +31,7 @@ import edu.ucne.prestamospersonales.presentation.registros.editPersona.component
 import edu.ucne.prestamospersonales.presentation.registros.editPersona.components.InputText
 import edu.ucne.prestamospersonales.presentation.registros.editPersona.components.TextBox
 import edu.ucne.prestamospersonales.presentation.registros.editPersona.isNumeric
+import edu.ucne.prestamospersonales.presentation.registros.editPrestamo.components.TextBoxP
 
 @Composable
 fun PrestamoScreen(
@@ -104,20 +105,20 @@ fun EditConten(
             viewModel.fechaPrestamo = ElijeFecha(
                 stringResource(id = R.string.FechaPrestamo),
                 true,
-                ""
+                "*Campo Obligatorio*"
             )
 
             viewModel.fechaVence = ElijeFecha(
                 stringResource(id = R.string.FechaVence),
                 true,
-                "")
+                "*Campo Obligatorio*")
 
-            viewModel.personaId = TextBox().toString()
+            viewModel.personaId = TextBoxP().toString()
         }
 
         InputText(
             isError = true,
-            errorMsg = "",
+            errorMsg = "*Campo Obligatorio*",
             text = viewModel.concepto,
             hint = stringResource(id = R.string.Concepto),
             onTextChange = { viewModel.concepto = it },
@@ -132,7 +133,7 @@ fun EditConten(
 
         InputText(
             isError = true,
-            errorMsg = "",
+            errorMsg = "*Campo Obligatorio*",
             text = viewModel.monto,
             hint = stringResource(id = R.string.Monto),
             onTextChange = { viewModel.monto = it },
@@ -147,7 +148,7 @@ fun EditConten(
 
         InputText(
             isError = true,
-            errorMsg = "",
+            errorMsg = "*Campo Obligatorio*",
             text = viewModel.balance,
             hint = stringResource(id = R.string.Balance),
             onTextChange = { viewModel.balance = it },
