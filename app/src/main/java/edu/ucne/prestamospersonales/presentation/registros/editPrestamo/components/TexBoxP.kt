@@ -20,7 +20,7 @@ import edu.ucne.prestamospersonales.data.models.Persona
 @Composable
 fun TextBoxP() : Int? {
 
-    var aux: Persona = Persona(null,"","","","","","",null,0.0)
+    var aux: Persona = Persona()
     var personaSelected by remember { mutableStateOf("") }
     var expanded by remember { mutableStateOf(false) }
 
