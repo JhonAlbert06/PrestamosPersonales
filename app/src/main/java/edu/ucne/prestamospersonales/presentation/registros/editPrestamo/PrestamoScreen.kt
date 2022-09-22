@@ -1,6 +1,5 @@
 package edu.ucne.prestamospersonales.presentation.registros.editPrestamo
 
-import android.util.Patterns
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -20,23 +19,20 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.core.text.isDigitsOnly
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import edu.ucne.prestamospersonales.R
 import edu.ucne.prestamospersonales.presentation.registros.editPersona.EditBottomBar
-import edu.ucne.prestamospersonales.presentation.registros.editPersona.EditPersonaViewModel
 import edu.ucne.prestamospersonales.presentation.registros.editPersona.EditTopBar
 import edu.ucne.prestamospersonales.presentation.registros.editPersona.components.ElijeFecha
 import edu.ucne.prestamospersonales.presentation.registros.editPersona.components.InputText
-import edu.ucne.prestamospersonales.presentation.registros.editPersona.components.TextBox
-import edu.ucne.prestamospersonales.presentation.registros.editPersona.isNumeric
 import edu.ucne.prestamospersonales.presentation.registros.editPrestamo.components.TextBoxP
 
 @Composable
 fun PrestamoScreen(
     navController: NavController,
-    viewModel: EditPrestamoViewModel = hiltViewModel()
+    viewModel: EditPrestamoViewModel = hiltViewModel(),
+    usuario: String
 ) {
 
     Scaffold(
@@ -48,7 +44,8 @@ fun PrestamoScreen(
         },
 
         content = {
-            viewModel.isError = validacion(viewModel)
+                  Text(text = usuario, style = MaterialTheme.typography.h1)
+            //viewModel.isError = validacion(viewModel)
         },
 
         bottomBar = {

@@ -31,7 +31,7 @@ fun Navigation() {
                 }
             )
         ){
-            PrestamoScreen(navController = navController)
+            //PrestamoScreen(navController = navController, usuario = usuario)
         }
     }
 }

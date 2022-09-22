@@ -16,13 +16,13 @@ class EditOcupacionViewModel @Inject constructor(
    private val Impl: OcupacionRepositoryImpl
 ): ViewModel() {
 
-    var _descripcion by mutableStateOf("")
-    var _salario by mutableStateOf("")
+    var descripcion by mutableStateOf("")
+    var salario by mutableStateOf("")
 
-    var isErrorDescription by mutableStateOf(false)
-    var isErrorSalario by mutableStateOf(false)
-    var errorMsgDescripcion by mutableStateOf("")
-    var errorMsgSalario by mutableStateOf("")
+    var isErrorDescription: Boolean = false
+    var isErrorSalario : Boolean = false
+    var errorMsgDescripcion: String = ""
+    var errorMsgSalario : String = ""
 
     var isError by mutableStateOf(false)
 
@@ -30,8 +30,8 @@ class EditOcupacionViewModel @Inject constructor(
         viewModelScope.launch {
             Impl.insert(
                 Ocupacion(
-                    descripcion = _descripcion,
-                    salario = _salario.toDouble()
+                    descripcion = descripcion,
+                    salario = salario.toDouble()
                 )
             )
         }

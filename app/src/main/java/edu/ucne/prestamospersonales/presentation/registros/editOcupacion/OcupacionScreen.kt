@@ -92,9 +92,9 @@ fun EditConten(viewModel: EditOcupacionViewModel) {
         OcupacionInputText(
             isError = viewModel.isErrorDescription,
             errorMsg = viewModel.errorMsgDescripcion,
-            text = viewModel._descripcion,
+            text = viewModel.descripcion,
             hint = stringResource(id = R.string.Descripcion),
-            onTextChange = {viewModel._descripcion = it} ,
+            onTextChange = {viewModel.descripcion = it} ,
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Text,
                 imeAction = ImeAction.Next
@@ -107,9 +107,9 @@ fun EditConten(viewModel: EditOcupacionViewModel) {
         OcupacionInputText(
             isError = viewModel.isErrorSalario,
             errorMsg = viewModel.errorMsgSalario,
-            text = viewModel._salario,
+            text = viewModel.salario,
             hint = stringResource(id = R.string.Salario),
-            onTextChange = {viewModel._salario = it} ,
+            onTextChange = {viewModel.salario = it} ,
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Number,
                 imeAction = ImeAction.Done
@@ -158,29 +158,26 @@ fun isNumeric(aux: String): Boolean{
 @Composable
 fun Validacion(viewModel: EditOcupacionViewModel): Boolean{
 
-    if (viewModel._descripcion.isEmpty()){
+    if (viewModel.descripcion.isEmpty()){
         viewModel.isErrorDescription= true;
         viewModel.errorMsgDescripcion = "*Campo Obligatorio*";
-    }
-    if (viewModel._descripcion.length < 5) {
+    } else if (viewModel.descripcion.length < 5) {
         viewModel.isErrorDescription = true;
         viewModel.errorMsgDescripcion = "Caracteres insuficientes Mínimo, (5)";
-    }
-    if (!(viewModel._descripcion.any{it.isLetter()})){
+    }else if (!(viewModel.descripcion.any{it.isLetter()})){
         viewModel.isErrorDescription = true;
         viewModel.errorMsgDescripcion = "Descripcion no valida";
     }
 
-    if (viewModel._salario.isEmpty()){
+    if (viewModel.salario.isEmpty()){
         viewModel.isErrorSalario = true
         viewModel.errorMsgSalario = "*Campo Obligatorio*"
-    }
-    if( !isNumeric(viewModel._salario)) {
+    }else if( !isNumeric(viewModel.salario)) {
         viewModel.isErrorSalario = true
         viewModel.errorMsgSalario = "No es una cantidad valida"
     }
 
     EditConten(viewModel = viewModel)
 
-    return !(viewModel.isErrorDescription || viewModel.isErrorSalario)
+    return (viewModel.isErrorDescription || viewModel.isErrorSalario)
 }
