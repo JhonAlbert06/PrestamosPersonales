@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">PrestamosPersonales</string>
+    <string name="Ocupaciones">Ocupaciones</string>
+    <string name="addOcupacion">Añadir Ocupación</string>
+    <string name="Descripcion">Descripción</string>
+    <string name="Salario">Salario</string>
+    <string name="addPersona">Añadir Persona</string>
+    <string name="Nombres">Nombres</string>
+    <string name="Telefono">Teléfono</string>
+    <string name="Celular">Celular</string>
+    <string name="Email">Email</string>
+    <string name="Direccion">Dirección</string>
+    <string name="FechaNacimiento">Fecha de Nacimiento</string>
+    <string name="Ocupacion">Ocupación</string>
+    <string name="Personas">Personas</string>
+    <string name="addPrestamo">Añadir Prestamo</string>
+    <string name="Concepto">Concepto</string>
+    <string name="Monto">Monto</string>
+    <string name="Balance">Balance</string>
+    <string name="FechaPrestamo">Fecha del Prestamo</string>
+    <string name="FechaVence">Fecha de Vencimiento</string>
+    <string name="Persona">Persona</string>
+    <string name="Prestamos">Prestamos</string>
 </resources>
