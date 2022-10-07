@@ -25,6 +25,8 @@ class OcupacionEditViewModel @Inject constructor(
     private val _salario = mutableStateOf(TextFieldOcupacionState())
     val salario: State<TextFieldOcupacionState> = _salario
 
+    val isError: Boolean = false
+
     private val _eventFlow = MutableSharedFlow<UiEvent>()
     val eventFlow = _eventFlow.asSharedFlow()
 
