@@ -6,19 +6,23 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import edu.ucne.prestamospersonales.ui.ocupaciones.OcupacionEditScreen
 
 @Composable
 fun Navigation() {
     val navController = rememberNavController()
     NavHost(
         navController = navController,
-        startDestination = "Screen.HomePrestamo.route"
+        startDestination = Screen.EditOcupacion.route
     ){
-        composable(route = "Screen.HomePrestamo.route"){
-            //PrestamosScreen(navController = navController)
+       /*
+       composable(route = "Screen.HomePrestamo.route"){
+            OcupacionEditScreen(navController = navController)
         }
+        */
+
         composable(
-            route = "Screen.EditPrestamo.route",
+            route = Screen.EditOcupacion.route,
             arguments = listOf(
                 navArgument(
                     name = "ocupacionId"
@@ -28,7 +32,7 @@ fun Navigation() {
                 }
             )
         ){
-            //PrestamoScreen(navController = navController)
+            OcupacionEditScreen(navController = navController)
         }
     }
 }
