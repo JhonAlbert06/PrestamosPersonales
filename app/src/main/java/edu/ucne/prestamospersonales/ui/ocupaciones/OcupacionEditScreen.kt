@@ -31,7 +31,7 @@ fun OcupacionEditScreen(
 ){
     val descripcionState = viewModel.descripcion.value
     val salarioState = viewModel.salario.value
-    val isError = viewModel.isError
+    var isError = viewModel.isError
 
     LaunchedEffect(key1 = true){
         viewModel.eventFlow.collectLatest { event ->
@@ -212,5 +212,5 @@ fun Validacion(
         onEvent = {onEvent(it)}
     )
 
-    return (isErrorDescrition && isErrorSalario)
+    return !(isErrorDescrition && isErrorSalario)
 }
