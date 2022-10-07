@@ -2,6 +2,7 @@ package edu.ucne.prestamospersonales
 
 sealed class Screen(val route: String){
 
+    object HomeOcupacion: Screen("OcupacionHomeScreen")
     object EditOcupacion: Screen("OcupacionEditScreen?ocupacionId={ocupacionId}"){
         fun passId(ocupacionId: Int?): String {
             return "OcupacionEditScreen?ocupacionId=$ocupacionId"
