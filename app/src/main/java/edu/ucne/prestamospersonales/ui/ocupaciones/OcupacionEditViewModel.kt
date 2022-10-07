@@ -64,8 +64,8 @@ class OcupacionEditViewModel @Inject constructor(
                 viewModelScope.launch {
                     impl.insert(
                         Ocupacion(
-                            descripcion = descripcion.value.text,
-                            salario = salario.value.text.toDouble(),
+                            descripcion = _descripcion.value.text,
+                            salario = _salario.value.text.toDouble(),
                             ocupacionId = currentUserId
                         )
                     )
