@@ -119,3 +119,4 @@ fun HomeTopBar(
         backgroundColor = MaterialTheme.colors.surface
     )
 }
+
