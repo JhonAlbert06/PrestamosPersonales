@@ -21,7 +21,6 @@ fun Navigation() {
             OcupacionHomeScreen(navController = navController)
         }
 
-
         composable(
             route = Screen.EditOcupacion.route,
             arguments = listOf(
@@ -35,5 +34,6 @@ fun Navigation() {
         ) {
             OcupacionEditScreen(navController = navController)
         }
+
     }
 }
