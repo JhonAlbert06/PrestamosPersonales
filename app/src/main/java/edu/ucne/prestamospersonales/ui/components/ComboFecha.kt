@@ -20,7 +20,7 @@ import java.util.*
 
 
 @Composable
-fun ComboFecha(): String {
+fun ComboFecha(isError: Boolean, mgs: String): String {
 
     val calendario = Calendar.getInstance()
     val Año = calendario.get(Calendar.YEAR)
@@ -64,11 +64,20 @@ fun ComboFecha(): String {
         }
     )
 
+    if (isError) {
+        Text(
+            text = mgs,
+            color = MaterialTheme.colors.error,
+            style = MaterialTheme.typography.caption,
+            modifier = Modifier.padding(start = 16.dp)
+        )
+    }
+
     return fecha
 }
 
 @Preview(showSystemUi = true, showBackground = true)
 @Composable
 fun Previewfecha() {
-    ComboFecha()
+    //ComboFecha(isErrorFechaPrestamo, mgsFechaPrestamo)
 }
