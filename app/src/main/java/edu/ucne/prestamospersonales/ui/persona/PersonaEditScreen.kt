@@ -62,7 +62,7 @@ fun PersonaEditScreen(
         bottomBar = {
             PersonaEditBottomBar(
                 onInsertPersona = { viewModel.onEvent(PersonaEditEvent.InsertPersona)},
-                isError = viewModel.isError
+                isError = true //viewModel.isError
             )
         }
 
