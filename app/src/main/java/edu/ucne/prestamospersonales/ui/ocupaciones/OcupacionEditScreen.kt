@@ -46,7 +46,7 @@ fun OcupacionEditScreen(
     Scaffold(
 
         topBar = {
-            EditTopBar(
+            OcupacionEditTopBar(
                 topAppBarText = stringResource(id = R.string.addOcupacion)
             )
         },
@@ -59,7 +59,7 @@ fun OcupacionEditScreen(
         },
 
         bottomBar = {
-            EditBottomBar(
+            OcupacionEditBottomBar(
                 onInsertOcupacion = { viewModel.onEvent(OcupacionEditEvent.InsertOcupacion)},
                 isError = isError
             )
@@ -69,7 +69,7 @@ fun OcupacionEditScreen(
 }
 
 @Composable
-fun EditConten(
+fun OcupacionEditConten(
     descripcion: String,
     salario: String,
     errorDescripcion: Boolean,
@@ -118,7 +118,7 @@ fun EditConten(
 }
 
 @Composable
-fun EditBottomBar(
+fun OcupacionEditBottomBar(
     modifier: Modifier = Modifier,
     onInsertOcupacion: () -> Unit,
     isError: Boolean
@@ -142,7 +142,7 @@ fun EditBottomBar(
 }
 
 @Composable
-fun EditTopBar(topAppBarText: String) {
+fun OcupacionEditTopBar(topAppBarText: String) {
     TopAppBar(
         title = {
             Text(
@@ -202,7 +202,7 @@ fun Validacion(
         msgErrorSalario = "No es una cantidad valida"
     }
 
-    EditConten(
+    OcupacionEditConten(
         descripcion = descripcion,
         salario = salario,
         errorDescripcion = isErrorDescrition,
