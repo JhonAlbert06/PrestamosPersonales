@@ -19,7 +19,8 @@ fun InputText(
     onTextChange: (String) -> Unit,
     modifier: Modifier = Modifier,
     keyboardOptions: KeyboardOptions,
-    keyboardActions: KeyboardActions
+    keyboardActions: KeyboardActions,
+    readOnly: Boolean = false
 ){
     Column(
         modifier = modifier
@@ -42,6 +43,7 @@ fun InputText(
             keyboardOptions = keyboardOptions,
             keyboardActions = keyboardActions,
             singleLine = true,
+            readOnly = readOnly
         )
 
         if (isError) {
