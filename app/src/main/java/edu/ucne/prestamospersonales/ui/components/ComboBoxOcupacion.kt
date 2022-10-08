@@ -16,7 +16,7 @@ import edu.ucne.prestamospersonales.R
 import edu.ucne.prestamospersonales.data.models.Ocupacion
 
 @Composable
-fun ComboBoxOcupacion() : Int? {
+fun ComboBoxOcupacion(isError: Boolean, msg: String): Int? {
 
     var aux: Ocupacion = Ocupacion(0,"", 0.0)
     var ocupacionSelected by remember { mutableStateOf("") }
@@ -71,6 +71,15 @@ fun ComboBoxOcupacion() : Int? {
                     Text(text = ocupacion.descripcion)
                 }
             }
+        }
+
+        if (isError) {
+            Text(
+                text = msg,
+                color = MaterialTheme.colors.error,
+                style = MaterialTheme.typography.caption,
+                modifier = Modifier.padding(start = 16.dp)
+            )
         }
 
     }
