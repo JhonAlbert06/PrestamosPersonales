@@ -17,7 +17,7 @@ import edu.ucne.prestamospersonales.R
 import edu.ucne.prestamospersonales.data.models.Persona
 
 @Composable
-fun ComboBoxPersona() : Int? {
+fun ComboBoxPersona(isError: Boolean, mgs: String): Int? {
 
     var aux: Persona = Persona()
     var personaSelected by remember { mutableStateOf("") }
@@ -74,6 +74,15 @@ fun ComboBoxPersona() : Int? {
             }
         }
 
+        if (isError) {
+            Text(
+                text = mgs,
+                color = MaterialTheme.colors.error,
+                style = MaterialTheme.typography.caption,
+                modifier = Modifier.padding(start = 16.dp)
+            )
+        }
+
     }
 
     return  aux.personaId
@@ -82,5 +91,5 @@ fun ComboBoxPersona() : Int? {
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun Previewtexbox() {
-    ComboBoxPersona()
+    //ComboBoxPersona(isErrorPersonaId, mgsPersonaId)
 }
