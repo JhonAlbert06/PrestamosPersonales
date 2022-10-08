@@ -9,13 +9,14 @@ import androidx.navigation.navArgument
 import edu.ucne.prestamospersonales.ui.ocupaciones.OcupacionEditScreen
 import edu.ucne.prestamospersonales.ui.ocupaciones.OcupacionHomeScreen
 import edu.ucne.prestamospersonales.ui.persona.PersonaEditScreen
+import edu.ucne.prestamospersonales.ui.persona.PersonaHomeScreen
 
 @Composable
 fun Navigation() {
     val navController = rememberNavController()
     NavHost(
         navController = navController,
-        startDestination = Screen.HomeOcupacion.route
+        startDestination = Screen.HomePersona.route
     ) {
 
         composable(route = Screen.HomeOcupacion.route) {
@@ -34,6 +35,10 @@ fun Navigation() {
             )
         ) {
             OcupacionEditScreen(navController = navController)
+        }
+
+        composable(route = Screen.HomePersona.route) {
+            PersonaHomeScreen(navController = navController)
         }
 
         composable(
