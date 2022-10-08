@@ -1,6 +1,5 @@
 package edu.ucne.prestamospersonales.ui.persona
 
-import androidx.compose.material.rememberBottomSheetState
 import androidx.compose.runtime.*
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
@@ -8,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import edu.ucne.prestamospersonales.data.models.Persona
 import edu.ucne.prestamospersonales.data.repository.PersonaRepositoryImpl
-import edu.ucne.prestamospersonales.ui.ocupaciones.OcupacionEditViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
