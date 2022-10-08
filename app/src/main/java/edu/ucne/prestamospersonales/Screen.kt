@@ -16,6 +16,12 @@ sealed class Screen(val route: String){
         }
     }
 
+    object EditPrestamo: Screen("PrestamoEditScreen?prestamoId={prestamoId}"){
+        fun passId(prestamoId: Int?): String {
+            return "PrestamoEditScreen?prestamoId=$prestamoId"
+        }
+    }
+
 }
 
 /*
