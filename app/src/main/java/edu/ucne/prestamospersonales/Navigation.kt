@@ -10,19 +10,19 @@ import edu.ucne.prestamospersonales.ui.ocupaciones.OcupacionEditScreen
 import edu.ucne.prestamospersonales.ui.ocupaciones.OcupacionHomeScreen
 import edu.ucne.prestamospersonales.ui.persona.PersonaEditScreen
 import edu.ucne.prestamospersonales.ui.persona.PersonaHomeScreen
+import edu.ucne.prestamospersonales.ui.prestamo.PrestamoEditScreen
 
 @Composable
 fun Navigation() {
     val navController = rememberNavController()
     NavHost(
         navController = navController,
-        startDestination = Screen.HomePersona.route
+        startDestination = Screen.EditPrestamo.route
     ) {
 
         composable(route = Screen.HomeOcupacion.route) {
             OcupacionHomeScreen(navController = navController)
         }
-
         composable(
             route = Screen.EditOcupacion.route,
             arguments = listOf(
@@ -37,10 +37,10 @@ fun Navigation() {
             OcupacionEditScreen(navController = navController)
         }
 
+
         composable(route = Screen.HomePersona.route) {
             PersonaHomeScreen(navController = navController)
         }
-
         composable(
             route = Screen.EditPersona.route,
             arguments = listOf(
@@ -54,6 +54,21 @@ fun Navigation() {
         ) {
             PersonaEditScreen(navController = navController)
         }
+
+        composable(
+            route = Screen.EditPrestamo.route,
+            arguments = listOf(
+                navArgument(
+                    name = "prestamoId"
+                ) {
+                    type = NavType.IntType
+                    defaultValue = -1
+                }
+            )
+        ) {
+            PrestamoEditScreen(navController = navController)
+        }
+
 
     }
 }
