@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import edu.ucne.prestamospersonales.data.models.Ocupacion
+import java.text.DecimalFormat
 
 
 @Composable
@@ -37,12 +38,14 @@ fun Item(
                 verticalArrangement = Arrangement.Center
             ) {
                 Text(
-                    text = "Ocupacion: ${ocupacion.descripcion}",
+                    text = ocupacion.descripcion,
                     style = MaterialTheme.typography.h6
                 )
                 Spacer(modifier = Modifier.height(4.dp))
+
+                val decimal = DecimalFormat("#,###.######")
                 Text(
-                    text = "Salario: $ ${ocupacion.salario}",
+                    text =  "$ ${decimal.format(ocupacion.salario)}",
                     style = MaterialTheme.typography.h6
                 )
             }
