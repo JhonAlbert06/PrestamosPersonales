@@ -11,13 +11,14 @@ import edu.ucne.prestamospersonales.ui.ocupaciones.OcupacionHomeScreen
 import edu.ucne.prestamospersonales.ui.persona.PersonaEditScreen
 import edu.ucne.prestamospersonales.ui.persona.PersonaHomeScreen
 import edu.ucne.prestamospersonales.ui.prestamo.PrestamoEditScreen
+import edu.ucne.prestamospersonales.ui.prestamo.PrestamoHomeScreen
 
 @Composable
 fun Navigation() {
     val navController = rememberNavController()
     NavHost(
         navController = navController,
-        startDestination = Screen.EditPrestamo.route
+        startDestination = Screen.HomePrestamo.route
     ) {
 
         composable(route = Screen.HomeOcupacion.route) {
@@ -55,6 +56,9 @@ fun Navigation() {
             PersonaEditScreen(navController = navController)
         }
 
+        composable(route = Screen.HomePrestamo.route) {
+            PrestamoHomeScreen(navController = navController)
+        }
         composable(
             route = Screen.EditPrestamo.route,
             arguments = listOf(
