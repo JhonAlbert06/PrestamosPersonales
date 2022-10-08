@@ -63,9 +63,9 @@ fun ComboBoxOcupacion() : Int? {
         ) {
             ocupaciones.forEach { ocupacion ->
                 DropdownMenuItem(onClick = {
+                    aux = ocupacion
                     expanded = false
                     ocupacionSelected = ocupacion.descripcion
-                    aux = ocupacion
                 }
                 ) {
                     Text(text = ocupacion.descripcion)
@@ -75,5 +75,5 @@ fun ComboBoxOcupacion() : Int? {
 
     }
 
-    return  aux.ocupacionId
+    return aux.ocupacionId
 }
