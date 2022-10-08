@@ -172,8 +172,8 @@ fun PersonaEditConten(
             })
         )
 
-        viewModel.fechaNacimiento.value.text = ComboFecha()
-        viewModel.ocupacionId.value.text = ComboBoxOcupacion().toString()
+        viewModel.fechaNacimiento.value.text = ComboFecha(IsErrorFechaNacimiento, msgFechaNacimiento)
+        viewModel.ocupacionId.value.text = ComboBoxOcupacion(IsErrorOcupacionId, msgOcupacionId).toString()
 
         InputText(
             isError = IsErrorBalance,
@@ -254,12 +254,16 @@ fun Validacion(
     var isErrorCelular = false
     var isErrorEmail = false
     var isErrorDireccion = false
+    var isErrorFechaNacimiento = false
+    var isErrorOcupacionId = false
 
     var mgsNombres = ""
     var mgsTelefono = ""
     var mgsCelular = ""
     var mgsEmail = ""
     var mgsDireccion = ""
+    var mgsFechaNacimiento = ""
+    var mgsOcupacionId = ""
 
     if (viewModel.nombres.value.text.isEmpty()) {
         isErrorNombres = true
@@ -317,6 +321,18 @@ fun Validacion(
         mgsDireccion = "Direccion no valida";
     }
 
+    if (viewModel.fechaNacimiento.value.text.isBlank()) {
+        isErrorFechaNacimiento = true
+        mgsFechaNacimiento = "*Campo Obligatorio*"
+    }
+
+    if (viewModel.ocupacionId.value.text.isBlank()) {
+        isErrorOcupacionId = true
+        mgsOcupacionId = "*Campo Obligatorio*"
+    }
+
+
+
 
     PersonaEditConten(
         viewModel = viewModel,
@@ -325,16 +341,16 @@ fun Validacion(
         IsErrorCelular = isErrorCelular,
         IsErrorEmail = isErrorEmail,
         IsErrorDireccion = isErrorDireccion,
-        IsErrorFechaNacimiento = false,
-        IsErrorOcupacionId = false,
+        IsErrorFechaNacimiento = isErrorFechaNacimiento,
+        IsErrorOcupacionId = isErrorOcupacionId,
         IsErrorBalance = false,
         msgNombres = mgsNombres,
         msgTelefono = mgsTelefono,
         msgCelular = mgsCelular,
         msgEmail = mgsEmail,
         msgDireccion = mgsDireccion,
-        msgFechaNacimiento = "",
-        msgOcupacionId = "",
+        msgFechaNacimiento = mgsFechaNacimiento,
+        msgOcupacionId = mgsOcupacionId,
         msgBalance = "",
         onEvent = { onEvent(it) }
     )
