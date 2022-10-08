@@ -9,17 +9,16 @@ sealed class Screen(val route: String){
         }
     }
 
-    object EditPersona: Screen("PersonaEditPersona?personaId={personaId}"){
+    object HomePersona: Screen("PersonaHomeScreen")
+    object EditPersona: Screen("PersonaEditScreen?personaId={personaId}"){
         fun passId(personaId: Int?): String {
-            return "PersonaEditPersona?personaId=$personaId"
+            return "PersonaEditScreen?personaId=$personaId"
         }
     }
 
 }
 
 /*
-    object HomePrestamo: Screen("homePersona")
-
     object EditPrestamo: Screen("editPrestamo?prestamoId={prestamoId}"){
         fun passId(prestamoId: Int?): String {
             return "editPrestamo?prestamoId=$prestamoId"
