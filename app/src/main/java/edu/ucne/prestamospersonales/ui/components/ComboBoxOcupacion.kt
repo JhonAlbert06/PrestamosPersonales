@@ -14,10 +14,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import edu.ucne.prestamospersonales.R
 import edu.ucne.prestamospersonales.data.models.Ocupacion
-import javax.inject.Inject
 
 @Composable
-fun ComboBox() : Int? {
+fun ComboBoxOcupacion() : Int? {
 
     var aux: Ocupacion = Ocupacion(0,"", 0.0)
     var ocupacionSelected by remember { mutableStateOf("") }
