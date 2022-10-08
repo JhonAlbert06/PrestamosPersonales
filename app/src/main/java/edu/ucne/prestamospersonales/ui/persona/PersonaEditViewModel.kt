@@ -120,7 +120,7 @@ class PersonaEditViewModel @Inject constructor(
                             direccion = _direccion.value.text,
                             fechaNacimiento = _fechaNacimiento.value.text,
                             ocupacionId = _ocupacionId.value.text.toInt(),
-                            balance = _balance.value.text.toDouble(),
+                            balance = 0.00,//_balance.value.text.toDouble(),
                             personaId = currentUserId
                         )
                     )
