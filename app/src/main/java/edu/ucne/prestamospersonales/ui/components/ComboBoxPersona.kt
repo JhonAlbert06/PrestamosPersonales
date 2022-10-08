@@ -19,7 +19,7 @@ import edu.ucne.prestamospersonales.data.models.Persona
 @Composable
 fun ComboBoxPersona(isError: Boolean, mgs: String): Int? {
 
-    var aux: Persona = Persona()
+    var aux: Persona = Persona(0,"","","","","","",0,0.0)
     var personaSelected by remember { mutableStateOf("") }
     var expanded by remember { mutableStateOf(false) }
 
