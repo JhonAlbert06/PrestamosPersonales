@@ -209,17 +209,17 @@ fun validacion(
     var mgsMonto = ""
     var mgsBalance = ""
 
-    if (viewModel.fechaPrestamo.value.text.isBlank()) {
+    if (viewModel.fechaPrestamo.value.text == "") {
         isErrorFechaPrestamo = true
         mgsFechaPrestamo = "*Campo Obligatorio*"
     }
 
-    if (viewModel.fechaVence.value.text.isBlank()) {
+    if (viewModel.fechaVence.value.text == "") {
         isErrorFechaVence = true
         mgsFechaVence = "*Campo Obligatorio*"
     }
 
-    if (viewModel.personaId.value.text.isBlank()) {
+    if (viewModel.personaId.value.text == "0") {
         isErrorPersonaId = true
         mgsPersonaId = "*Campo Obligatorio*"
     }
