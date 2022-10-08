@@ -23,7 +23,7 @@ import androidx.core.text.isDigitsOnly
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import edu.ucne.prestamospersonales.R
-import edu.ucne.prestamospersonales.ui.components.ComboBox
+import edu.ucne.prestamospersonales.ui.components.ComboBoxOcupacion
 import edu.ucne.prestamospersonales.ui.components.ComboFecha
 import edu.ucne.prestamospersonales.ui.components.InputText
 import kotlinx.coroutines.flow.collectLatest
@@ -173,7 +173,7 @@ fun PersonaEditConten(
         )
 
         viewModel.fechaNacimiento.value.text = ComboFecha()
-        viewModel.ocupacionId.value.text = ComboBox().toString()
+        viewModel.ocupacionId.value.text = ComboBoxOcupacion().toString()
 
         InputText(
             isError = IsErrorBalance,
