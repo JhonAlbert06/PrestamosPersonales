@@ -10,27 +10,37 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 data class ArticuloListUiState(
-    val articulos : List<ArticulosResponseDto> = emptyList()
+    val articulos: List<ArticulosResponseDto> = emptyList()
 )
-
 
 @HiltViewModel
 class ArticuloHomeViewModel @Inject constructor(
     private val api: ArticuloRepository
-): ViewModel() {
+) : ViewModel() {
 
     private val _uiState = MutableStateFlow(ArticuloListUiState())
-    val uiState : StateFlow<ArticuloListUiState> = _uiState.asStateFlow()
+    val uiState: StateFlow<ArticuloListUiState> = _uiState.asStateFlow()
+
+    val aux: List<ArticulosResponseDto> = emptyList()
 
     init {
         viewModelScope.launch {
-            api.getAll().onEach { list ->
-                _uiState.getAndUpdate {
-                    it.copy(articulos = list)
-                }
+            _uiState.getAndUpdate {
+                it.copy(articulos = api.getArticulos().sortedBy { it.ariticuloId })
             }
         }
     }
+
+    /*
+    viewModelScope.launch {
+            uiState = try {
+                uiState.copy(coinsList = coinApiService.getCoins().sortedBy { it.rank })
+            } catch (ioe: IOException) {
+                val messages = listOf(ioe.message.toString())
+                uiState.copy(userMessages = messages)
+            }
+        }
+    * */
 
 
 }
