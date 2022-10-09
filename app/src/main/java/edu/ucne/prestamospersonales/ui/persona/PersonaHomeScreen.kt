@@ -16,7 +16,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import edu.ucne.prestamospersonales.R
 import edu.ucne.prestamospersonales.Screen
-import edu.ucne.prestamospersonales.data.models.Persona
+import edu.ucne.prestamospersonales.data.local.models.Persona
 import edu.ucne.prestamospersonales.ui.components.ItemPersona
 
 @Composable

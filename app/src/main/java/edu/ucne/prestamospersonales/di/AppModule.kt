@@ -7,7 +7,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import edu.ucne.prestamospersonales.data.AppDataBase
+import edu.ucne.prestamospersonales.data.local.AppDataBase
 import edu.ucne.prestamospersonales.utils.DATABASE_NAME
 import javax.inject.Singleton
 
@@ -16,7 +16,7 @@ import javax.inject.Singleton
 object AppModule {
     @Singleton
     @Provides
-    fun providesDataBase(@ApplicationContext context: Context) : AppDataBase{
+    fun providesDataBase(@ApplicationContext context: Context) : AppDataBase {
         return Room.databaseBuilder(
             context,
             AppDataBase::class.java,

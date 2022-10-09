@@ -6,7 +6,7 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
 import dagger.hilt.android.lifecycle.HiltViewModel
-import edu.ucne.prestamospersonales.data.models.Prestamo
+import edu.ucne.prestamospersonales.data.local.models.Prestamo
 import edu.ucne.prestamospersonales.data.repository.PrestamoRepositoryImpl
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow

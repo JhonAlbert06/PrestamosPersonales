@@ -12,7 +12,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.*
 import edu.ucne.prestamospersonales.R
-import edu.ucne.prestamospersonales.data.models.Prestamo
+import edu.ucne.prestamospersonales.data.local.models.Prestamo
 
 @Composable
 fun ItemPrestamo(

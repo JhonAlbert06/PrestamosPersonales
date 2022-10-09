@@ -11,7 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import edu.ucne.prestamospersonales.data.models.Ocupacion
+import edu.ucne.prestamospersonales.data.local.models.Ocupacion
 import java.text.DecimalFormat
 
 

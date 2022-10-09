@@ -1,4 +1,4 @@
-package edu.ucne.prestamospersonales.data.models
+package edu.ucne.prestamospersonales.data.local.models
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

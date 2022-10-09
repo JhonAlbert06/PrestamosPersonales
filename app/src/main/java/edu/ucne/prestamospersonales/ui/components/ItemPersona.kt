@@ -15,7 +15,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import edu.ucne.prestamospersonales.data.models.Persona
+import edu.ucne.prestamospersonales.data.local.models.Persona
 
 
 @Composable

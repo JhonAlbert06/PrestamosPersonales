@@ -1,11 +1,11 @@
-package edu.ucne.prestamospersonales.data.dao
+package edu.ucne.prestamospersonales.data.local.dao
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import edu.ucne.prestamospersonales.data.models.Prestamo
+import edu.ucne.prestamospersonales.data.local.models.Prestamo
 import kotlinx.coroutines.flow.Flow
 
 @Dao

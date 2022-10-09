@@ -14,7 +14,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import edu.ucne.prestamospersonales.R
-import edu.ucne.prestamospersonales.data.models.Persona
+import edu.ucne.prestamospersonales.data.local.models.Persona
 
 @Composable
 fun ComboBoxPersona(isError: Boolean, mgs: String): Int? {

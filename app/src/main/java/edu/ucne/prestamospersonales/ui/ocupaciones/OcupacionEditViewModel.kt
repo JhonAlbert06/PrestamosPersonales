@@ -6,7 +6,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import edu.ucne.prestamospersonales.data.models.Ocupacion
+import edu.ucne.prestamospersonales.data.local.models.Ocupacion
 import edu.ucne.prestamospersonales.data.repository.OcupacionRepositoryImpl
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow

@@ -13,7 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import edu.ucne.prestamospersonales.R
-import edu.ucne.prestamospersonales.data.models.Ocupacion
+import edu.ucne.prestamospersonales.data.local.models.Ocupacion
 
 @Composable
 fun ComboBoxOcupacion(isError: Boolean, msg: String): Int? {
