@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.*
 import edu.ucne.prestamospersonales.R
 import edu.ucne.prestamospersonales.data.local.models.Prestamo
@@ -54,7 +55,8 @@ fun ItemPrestamo(
 
                 Text(
                     text = "${stringResource(id = R.string.Persona)}: ${prestamo.personaId}",
-                    style = MaterialTheme.typography.h6
+                    style = MaterialTheme.typography.h5,
+                    fontWeight = FontWeight.ExtraBold
                 )
 
                 Spacer(modifier = Modifier.height(4.dp))

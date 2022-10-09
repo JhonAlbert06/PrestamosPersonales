@@ -11,6 +11,7 @@ import androidx.compose.material.icons.filled.Edit
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import edu.ucne.prestamospersonales.data.remote.dto.ArticulosResponseDto
 import java.text.DecimalFormat
@@ -38,8 +39,16 @@ fun ArticuloItem(
             Column(
                 verticalArrangement = Arrangement.Center
             ) {
+
                 Text(
                     text = articulo.descripcion,
+                    style = MaterialTheme.typography.h5,
+                    fontWeight = FontWeight.ExtraBold
+                )
+
+                Spacer(modifier = Modifier.height(4.dp))
+                Text(
+                    text = articulo.marca,
                     style = MaterialTheme.typography.h6
                 )
                 Spacer(modifier = Modifier.height(4.dp))
@@ -47,6 +56,11 @@ fun ArticuloItem(
                 val decimal = DecimalFormat("#,###.######")
                 Text(
                     text =  "$ ${decimal.format(articulo.precio)}",
+                    style = MaterialTheme.typography.h6
+                )
+                Spacer(modifier = Modifier.height(4.dp))
+                Text(
+                    text =  "$ ${decimal.format(articulo.existencia)}",
                     style = MaterialTheme.typography.h6
                 )
             }

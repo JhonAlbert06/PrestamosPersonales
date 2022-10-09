@@ -44,7 +44,6 @@ fun ItemPersona(
 
                 Text(
                     text = persona.nombres,
-                    modifier.align(Alignment.CenterHorizontally),
                     style = MaterialTheme.typography.h5,
                     fontWeight = FontWeight.ExtraBold
                 )
