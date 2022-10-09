@@ -10,6 +10,7 @@ import androidx.compose.material.icons.filled.Edit
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import edu.ucne.prestamospersonales.data.local.models.Ocupacion
 import java.text.DecimalFormat
@@ -39,7 +40,8 @@ fun Item(
             ) {
                 Text(
                     text = ocupacion.descripcion,
-                    style = MaterialTheme.typography.h6
+                    style = MaterialTheme.typography.h5,
+                    fontWeight = FontWeight.ExtraBold
                 )
                 Spacer(modifier = Modifier.height(4.dp))
 
