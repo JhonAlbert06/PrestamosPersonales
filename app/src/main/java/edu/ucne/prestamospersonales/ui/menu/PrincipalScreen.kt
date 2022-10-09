@@ -9,6 +9,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -17,6 +18,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import edu.ucne.prestamospersonales.Screen
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -80,14 +82,14 @@ fun MenuItem(
             imageVector = item.icon,
             contentDescription = item.title,
             modifier = Modifier
-                .height(40.dp)
-                .width(50.dp)
+                .height(80.dp)
+                .width(55.dp)
         )
         Spacer(modifier = Modifier.width(15.dp))
         Text(
             text = item.title,
             style = MaterialTheme.typography.body1,
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier.fillMaxSize().wrapContentSize(Alignment.CenterStart),
             fontWeight = FontWeight.ExtraBold,
             fontSize = 24.sp
         )
@@ -139,7 +141,7 @@ sealed class Destinos(
         Screen.HomePrestamo.route
     )
     object Articulos : Destinos(
-        Icons.Filled.MonetizationOn,
+        Icons.Filled.Article,
         "Articulos",
         Screen.ArticuloScreen.route
     )
@@ -149,5 +151,6 @@ sealed class Destinos(
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun PreviewMenu() {
-    //PrincipalScreen(navController)
+    val navController = rememberNavController()
+    PrincipalScreen(navController)
 }
