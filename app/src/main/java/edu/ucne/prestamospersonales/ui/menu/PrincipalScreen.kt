@@ -1,0 +1,147 @@
+package edu.ucne.prestamospersonales.ui.menu
+
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import edu.ucne.prestamospersonales.Screen
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
+
+@Composable
+fun PrincipalScreen(navController: NavHostController) {
+    val scaffoldState = rememberScaffoldState()
+    val scope = rememberCoroutineScope()
+    val navigationItems = listOf(
+        Destinos.Ocupaciones,
+        Destinos.Personas,
+        Destinos.Prestamos
+    )
+
+    Scaffold(
+        scaffoldState = scaffoldState,
+        topBar = { TopBar(scope, scaffoldState) },
+        drawerContent = { Menu(navigationItems, navController) }
+    ) {
+
+    }
+}
+
+@Composable
+fun Menu(
+    navigationItems: List<Destinos>,
+    navController: NavHostController
+) {
+
+    Column() {
+        Image(
+            imageVector = Icons.Filled.Payments,
+            contentDescription = "Logo",
+            modifier = Modifier
+                .height(160.dp)
+                .fillMaxWidth(),
+        )
+        navigationItems.forEach { item ->
+            MenuItem(item = item, navController)
+        }
+    }
+
+}
+
+@Composable
+fun MenuItem(
+    item: Destinos,
+    navController: NavHostController,
+) {
+    Row(
+        Modifier
+            .fillMaxWidth()
+            .height(100.dp)
+            .padding(6.dp)
+            .clip(RoundedCornerShape(12))
+            .padding(8.dp)
+            .clickable { navController.navigate(item.ruta) }
+    ) {
+        Image(
+            imageVector = item.icon,
+            contentDescription = item.title,
+            modifier = Modifier
+                .height(40.dp)
+                .width(50.dp)
+        )
+        Spacer(modifier = Modifier.width(15.dp))
+        Text(
+            text = item.title,
+            style = MaterialTheme.typography.body1,
+            modifier = Modifier.fillMaxSize(),
+            fontWeight = FontWeight.ExtraBold,
+            fontSize = 24.sp
+        )
+
+    }
+}
+
+@Composable
+fun TopBar(
+    scope: CoroutineScope,
+    scaffoldState: ScaffoldState
+) {
+    TopAppBar(
+        title = { Text(text = "Prestamos Personales") },
+        navigationIcon = {
+            IconButton(onClick = {
+                scope.launch {
+                    scaffoldState.drawerState.open()
+                }
+            }) {
+                Icon(
+                    imageVector = Icons.Filled.Menu,
+                    contentDescription = "Icono Menu"
+                )
+            }
+        }
+    )
+}
+
+
+sealed class Destinos(
+    val icon: ImageVector,
+    val title: String,
+    val ruta: String
+) {
+    object Ocupaciones : Destinos(
+        Icons.Filled.Work,
+        "Ocupaciones",
+        Screen.HomeOcupacion.route
+    )
+    object Personas : Destinos(
+        Icons.Filled.Person,
+        "Personas",
+        Screen.HomePersona.route
+    )
+    object Prestamos : Destinos(
+        Icons.Filled.MonetizationOn,
+        "Prestamos",
+        Screen.HomePrestamo.route
+    )
+}
+
+
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun PreviewMenu() {
+    //PrincipalScreen(navController)
+}
