@@ -28,7 +28,8 @@ fun PrincipalScreen(navController: NavHostController) {
     val navigationItems = listOf(
         Destinos.Ocupaciones,
         Destinos.Personas,
-        Destinos.Prestamos
+        Destinos.Prestamos,
+        Destinos.Articulos
     )
 
     Scaffold(
@@ -136,6 +137,11 @@ sealed class Destinos(
         Icons.Filled.MonetizationOn,
         "Prestamos",
         Screen.HomePrestamo.route
+    )
+    object Articulos : Destinos(
+        Icons.Filled.MonetizationOn,
+        "Articulos",
+        Screen.ArticuloScreen.route
     )
 }
 

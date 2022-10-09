@@ -6,6 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import edu.ucne.prestamospersonales.ui.articulos.ArticuloHomeScreen
 import edu.ucne.prestamospersonales.ui.menu.PrincipalScreen
 import edu.ucne.prestamospersonales.ui.ocupaciones.OcupacionEditScreen
 import edu.ucne.prestamospersonales.ui.ocupaciones.OcupacionHomeScreen
@@ -24,6 +25,12 @@ fun Navigation() {
         composable(route = Screen.PrincipalScreen.route) {
             PrincipalScreen(navController = navController)
         }
+
+        composable(route = Screen.ArticuloScreen.route) {
+            ArticuloHomeScreen(navController = navController)
+        }
+
+
         composable(route = Screen.HomeOcupacion.route) {
             OcupacionHomeScreen(navController = navController)
         }

@@ -9,6 +9,6 @@ class ArticuloRepository @Inject constructor(
     private val api: ArticulosApi
 ) {
     suspend fun getAll(): Flow<List<ArticulosResponseDto>> = flow{
-        val articulos = api.GetAll()
+       val articulos = api.GetAll()
     }
 }

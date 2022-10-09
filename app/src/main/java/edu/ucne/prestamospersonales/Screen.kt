@@ -25,4 +25,5 @@ sealed class Screen(val route: String){
 
     object PrincipalScreen: Screen("PrincipalScreen")
 
+    object ArticuloScreen: Screen("ArticuloHomeScreen")
 }
