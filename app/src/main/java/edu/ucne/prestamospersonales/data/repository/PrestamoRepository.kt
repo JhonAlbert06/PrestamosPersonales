@@ -1,6 +1,6 @@
 package edu.ucne.prestamospersonales.data.repository
 
-import edu.ucne.prestamospersonales.data.models.Prestamo
+import edu.ucne.prestamospersonales.data.local.models.Prestamo
 import kotlinx.coroutines.flow.Flow
 
 interface PrestamoRepository {

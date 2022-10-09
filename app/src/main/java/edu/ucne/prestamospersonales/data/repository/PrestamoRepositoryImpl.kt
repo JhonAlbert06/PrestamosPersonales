@@ -1,8 +1,7 @@
 package edu.ucne.prestamospersonales.data.repository
 
-import edu.ucne.prestamospersonales.data.AppDataBase
-import edu.ucne.prestamospersonales.data.dao.PrestamoDao
-import edu.ucne.prestamospersonales.data.models.Prestamo
+import edu.ucne.prestamospersonales.data.local.AppDataBase
+import edu.ucne.prestamospersonales.data.local.models.Prestamo
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 

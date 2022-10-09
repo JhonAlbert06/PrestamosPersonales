@@ -1,6 +1,6 @@
 package edu.ucne.prestamospersonales.data.repository
 
-import edu.ucne.prestamospersonales.data.models.Persona
+import edu.ucne.prestamospersonales.data.local.models.Persona
 import kotlinx.coroutines.flow.Flow
 
 interface PersonaRepository {

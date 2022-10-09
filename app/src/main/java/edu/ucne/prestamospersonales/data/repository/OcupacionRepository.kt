@@ -1,6 +1,6 @@
 package edu.ucne.prestamospersonales.data.repository
 
-import edu.ucne.prestamospersonales.data.models.Ocupacion
+import edu.ucne.prestamospersonales.data.local.models.Ocupacion
 import kotlinx.coroutines.flow.Flow
 
 interface OcupacionRepository {
