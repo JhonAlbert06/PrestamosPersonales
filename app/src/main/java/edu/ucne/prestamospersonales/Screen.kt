@@ -23,12 +23,6 @@ sealed class Screen(val route: String){
         }
     }
 
-}
+    object PrincipalScreen: Screen("PrincipalScreen")
 
-/*
-    object EditPrestamo: Screen("editPrestamo?prestamoId={prestamoId}"){
-        fun passId(prestamoId: Int?): String {
-            return "editPrestamo?prestamoId=$prestamoId"
-        }
-    }
-    */
+}
