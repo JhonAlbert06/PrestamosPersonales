@@ -60,7 +60,7 @@ fun ArticuloItem(
                 )
                 Spacer(modifier = Modifier.height(4.dp))
                 Text(
-                    text =  "$ ${decimal.format(articulo.existencia)}",
+                    text =  articulo.existencia.toString(),
                     style = MaterialTheme.typography.h6
                 )
             }
