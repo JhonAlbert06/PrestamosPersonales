@@ -25,7 +25,7 @@ import edu.ucne.prestamospersonales.ui.components.Toast
 fun ArticuloHomeScreen(
     navController: NavController,
     viewModel: ArticuloHomeViewModel = hiltViewModel()
-){
+) {
 
     Scaffold(
 
@@ -33,21 +33,18 @@ fun ArticuloHomeScreen(
             ArticuloHomeTopBar()
         },
 
-
         floatingActionButton = {
             ArticuloHomeFab(
                 onFacClicked = { navController.navigate(Screen.EditPrestamo.route) }
             )
         },
 
-
-
         content = { innerPadding ->
             val uiState by viewModel.uiState.collectAsState()
             ArticuloHomeContent(
                 viewModel = viewModel,
                 modifier = Modifier.padding(innerPadding),
-                onDeleteArticulo = {viewModel.onEvent(ArticuloHomeEvent.DeleteArticulo(it))},
+                onDeleteArticulo = { viewModel.onEvent(ArticuloHomeEvent.DeleteArticulo(it)) },
                 onEditArticulo = {
                     /*
                     navController.navigate(
@@ -55,7 +52,7 @@ fun ArticuloHomeScreen(
                     )
                     */
                 },
-                articulos = uiState.articulos ,
+                articulos = uiState.articulos,
             )
         }
     )
@@ -66,7 +63,7 @@ fun ArticuloHomeScreen(
 fun ArticuloHomeContent(
     viewModel: ArticuloHomeViewModel,
     modifier: Modifier = Modifier,
-    onDeleteArticulo:(articulo: ArticulosResponseDto) -> Unit,
+    onDeleteArticulo: (articulo: ArticulosResponseDto) -> Unit,
     onEditArticulo: (id: Int?) -> Unit,
     articulos: List<ArticulosResponseDto> = emptyList(),
 ) {
@@ -78,24 +75,24 @@ fun ArticuloHomeContent(
 
         val context = LocalContext.current
 
-        if (viewModel.uiState.value.articulos.isEmpty()) {
-            Toast(
-                context = context,
-                mgs = viewModel.uiState.value.error,
-                isLoadig = viewModel.uiState.value.isLoading
-            )
-        }
-        LazyColumn{
-            items(articulos){ articulo ->
+        Toast(
+            context = context,
+            mgs = viewModel.uiState.value.error,
+            isLoadig = viewModel.uiState.value.isLoading
+        )
+
+        LazyColumn {
+            items(articulos) { articulo ->
                 ArticuloItem(
                     articulo = articulo,
-                    onEditArticulo = {onEditArticulo},
-                    onDeleteArticulo = {onDeleteArticulo})
+                    onEditArticulo = { onEditArticulo },
+                    onDeleteArticulo = { onDeleteArticulo })
             }
         }
+
+
     }
 }
-
 
 
 @Composable
@@ -105,14 +102,15 @@ fun ArticuloHomeFab(
 ) {
     FloatingActionButton(
         onClick = onFacClicked,
-        modifier= modifier
+        modifier = modifier
             .height(52.dp)
             .widthIn(min = 52.dp),
         backgroundColor = MaterialTheme.colors.primary
     ) {
         Icon(
             imageVector = Icons.Outlined.Add,
-            contentDescription = null)
+            contentDescription = null
+        )
     }
 }
 
