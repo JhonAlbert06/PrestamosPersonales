@@ -44,7 +44,7 @@ fun ArticuloHomeScreen(
             ArticuloHomeContent(
                 viewModel = viewModel,
                 modifier = Modifier.padding(innerPadding),
-                onDeleteArticulo = { viewModel.onEvent(ArticuloHomeEvent.DeleteArticulo(it)) },
+                onDeleteArticulo = { viewModel.onEvent(ArticuloHomeEvent.DeleteArticulo(it.ariticuloId.toString())) },
                 onEditArticulo = {
                     /*
                     navController.navigate(
