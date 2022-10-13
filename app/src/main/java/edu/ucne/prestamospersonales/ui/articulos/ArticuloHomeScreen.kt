@@ -11,6 +11,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -18,6 +19,7 @@ import androidx.navigation.NavController
 import edu.ucne.prestamospersonales.Screen
 import edu.ucne.prestamospersonales.data.remote.dto.ArticulosResponseDto
 import edu.ucne.prestamospersonales.ui.components.ArticuloItem
+import edu.ucne.prestamospersonales.ui.components.Toast
 
 @Composable
 fun ArticuloHomeScreen(
@@ -43,8 +45,9 @@ fun ArticuloHomeScreen(
         content = { innerPadding ->
             val uiState by viewModel.uiState.collectAsState()
             ArticuloHomeContent(
+                viewModel = viewModel,
                 modifier = Modifier.padding(innerPadding),
-                onDeleteArticulo = {/*viewModel.delete(it)*/},
+                onDeleteArticulo = {viewModel.onEvent(ArticuloHomeEvent.DeleteArticulo(it))},
                 onEditArticulo = {
                     /*
                     navController.navigate(
@@ -61,6 +64,7 @@ fun ArticuloHomeScreen(
 
 @Composable
 fun ArticuloHomeContent(
+    viewModel: ArticuloHomeViewModel,
     modifier: Modifier = Modifier,
     onDeleteArticulo:(articulo: ArticulosResponseDto) -> Unit,
     onEditArticulo: (id: Int?) -> Unit,
@@ -71,6 +75,16 @@ fun ArticuloHomeContent(
         color = MaterialTheme.colors.surface,
         modifier = modifier,
     ) {
+
+        val context = LocalContext.current
+
+        if (viewModel.uiState.value.articulos.isEmpty()) {
+            Toast(
+                context = context,
+                mgs = viewModel.uiState.value.error,
+                isLoadig = viewModel.uiState.value.isLoading
+            )
+        }
         LazyColumn{
             items(articulos){ articulo ->
                 ArticuloItem(
@@ -81,6 +95,7 @@ fun ArticuloHomeContent(
         }
     }
 }
+
 
 
 @Composable
@@ -118,3 +133,4 @@ fun ArticuloHomeTopBar(
         backgroundColor = MaterialTheme.colors.surface
     )
 }
+
