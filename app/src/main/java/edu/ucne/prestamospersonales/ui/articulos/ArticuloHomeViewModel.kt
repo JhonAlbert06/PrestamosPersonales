@@ -25,14 +25,10 @@ class ArticuloHomeViewModel @Inject constructor(
         viewModelScope.launch {
             _uiState.getAndUpdate {
                 try {
-                    if (it.articulos.isEmpty()){
-                        it.copy(isLoading = true)
-                    }
-                    it.copy(articulos = api.getArticulos())
+                    it.copy(articulos = api.getArticulos(), isLoading = false)
                 }catch (ioe: IOException){
-                    var mgs = ioe.message.toString()
-                    it.copy(isLoading = false)
-                    it.copy(error = mgs)
+                    val mgs = ioe.message.toString()
+                    it.copy(error = mgs, isLoading = false)
                 }
             }
         }
