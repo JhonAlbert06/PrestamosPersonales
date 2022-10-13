@@ -38,7 +38,7 @@ class ArticuloHomeViewModel @Inject constructor(
         when (event) {
             is ArticuloHomeEvent.DeleteArticulo -> {
                 viewModelScope.launch {
-                    api.deleteArticulo(event.articulo.ariticuloId.toString())
+                    api.deleteArticulo(event.id)
                 }
             }
         }
