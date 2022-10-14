@@ -19,7 +19,7 @@ import edu.ucne.prestamospersonales.data.local.models.Persona
 @Composable
 fun ComboBoxPersona(isError: Boolean, mgs: String): Int? {
 
-    var aux: Persona = Persona(0,"","","","","","",0,0.0)
+    var aux by remember { mutableStateOf(0) }
     var personaSelected by remember { mutableStateOf("") }
     var expanded by remember { mutableStateOf(false) }
 
@@ -64,9 +64,9 @@ fun ComboBoxPersona(isError: Boolean, mgs: String): Int? {
         ) {
             personas.forEach { persona ->
                 DropdownMenuItem(onClick = {
-                    aux = persona
+                    aux = persona.personaId ?: 0
                     expanded = false
-                    personaSelected = persona.nombres
+                    personaSelected = persona.personaId.toString()
                 }
                 ) {
                     Text(text = persona.nombres)
@@ -85,7 +85,7 @@ fun ComboBoxPersona(isError: Boolean, mgs: String): Int? {
 
     }
 
-    return  aux.personaId
+    return  aux
 }
 
 @Preview(showBackground = true, showSystemUi = true)

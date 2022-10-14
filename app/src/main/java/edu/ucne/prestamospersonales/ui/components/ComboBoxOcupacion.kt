@@ -18,7 +18,7 @@ import edu.ucne.prestamospersonales.data.local.models.Ocupacion
 @Composable
 fun ComboBoxOcupacion(isError: Boolean, msg: String): Int? {
 
-    var aux: Ocupacion = Ocupacion(0,"", 0.0)
+    var aux by remember { mutableStateOf(0) }
     var ocupacionSelected by remember { mutableStateOf("") }
     var expanded by remember { mutableStateOf(false) }
 
@@ -61,9 +61,9 @@ fun ComboBoxOcupacion(isError: Boolean, msg: String): Int? {
             onDismissRequest = { expanded = false },
             modifier = Modifier.fillMaxWidth()
         ) {
-            ocupaciones.forEach { ocupacion ->
+            ocupaciones.onEach { ocupacion ->
                 DropdownMenuItem(onClick = {
-                    aux = ocupacion
+                    aux = ocupacion.ocupacionId ?: 0
                     expanded = false
                     ocupacionSelected = ocupacion.descripcion
                 }
@@ -84,5 +84,5 @@ fun ComboBoxOcupacion(isError: Boolean, msg: String): Int? {
 
     }
 
-    return aux.ocupacionId
+    return aux
 }
