@@ -35,7 +35,7 @@ fun ArticuloHomeScreen(
 
         floatingActionButton = {
             ArticuloHomeFab(
-                onFacClicked = { navController.navigate(Screen.EditPrestamo.route) }
+                onFacClicked = { navController.navigate(Screen.EditArticulo.route) }
             )
         },
 
@@ -46,11 +46,9 @@ fun ArticuloHomeScreen(
                 modifier = Modifier.padding(innerPadding),
                 onDeleteArticulo = { viewModel.onEvent(ArticuloHomeEvent.DeleteArticulo(it.ariticuloId.toString())) },
                 onEditArticulo = {
-                    /*
                     navController.navigate(
-                        route = Screen.EditPrestamo.passId(it)
+                        route = Screen.EditArticulo.passId(it.toString())
                     )
-                    */
                 },
                 articulos = uiState.articulos,
             )
