@@ -16,7 +16,7 @@ import edu.ucne.prestamospersonales.R
 import edu.ucne.prestamospersonales.data.local.models.Prestamo
 
 @Composable
-fun ItemPrestamo(
+fun ItemPrestamo (
     modifier: Modifier = Modifier,
     prestamo: Prestamo,
     onEditPrestamo: () -> Unit,
