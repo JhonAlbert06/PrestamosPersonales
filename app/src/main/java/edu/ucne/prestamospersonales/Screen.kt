@@ -27,7 +27,7 @@ sealed class Screen(val route: String){
 
     object HomeArticulo: Screen("ArticuloHomeScreen")
     object EditArticulo: Screen("ArticuloEditScreen?ariticuloId={ariticuloId}"){
-        fun passId(ariticuloId: String?): String {
+        fun passId(ariticuloId: Int?): String {
             return "ArticuloEditScreen?ariticuloId=$ariticuloId"
         }
     }
