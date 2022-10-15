@@ -17,7 +17,7 @@ import edu.ucne.prestamospersonales.R
 import edu.ucne.prestamospersonales.data.local.models.Persona
 
 @Composable
-fun ComboBoxPersona(isError: Boolean, mgs: String): Int? {
+fun ComboBoxPersona(isError: Boolean, mgs: String): Int {
 
     var aux by remember { mutableStateOf(0) }
     var personaSelected by remember { mutableStateOf("") }

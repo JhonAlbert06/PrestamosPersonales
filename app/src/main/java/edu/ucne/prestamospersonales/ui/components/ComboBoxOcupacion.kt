@@ -16,7 +16,7 @@ import edu.ucne.prestamospersonales.R
 import edu.ucne.prestamospersonales.data.local.models.Ocupacion
 
 @Composable
-fun ComboBoxOcupacion(isError: Boolean, msg: String): Int? {
+fun ComboBoxOcupacion(isError: Boolean, msg: String): Int {
 
     var aux by remember { mutableStateOf(0) }
     var ocupacionSelected by remember { mutableStateOf("") }
