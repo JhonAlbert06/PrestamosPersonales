@@ -25,4 +25,9 @@ class PrestamoRepositoryImpl @Inject constructor(
         return db.prestamoDao.getAll()
     }
 
+   /* override suspend fun findPersona(id: Int): String? {
+        return db.prestamoDao.findPersona(id)
+    }*/
+
+
 }
