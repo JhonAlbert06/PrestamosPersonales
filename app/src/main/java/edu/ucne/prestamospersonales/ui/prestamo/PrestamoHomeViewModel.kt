@@ -32,6 +32,8 @@ class PrestamoHomeViewModel @Inject constructor(
                     impl.delete(event.prestamo)
                 }
             }
+
+
         }
     }
 
