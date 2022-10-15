@@ -213,14 +213,14 @@ fun validacion(
     onEvent: (ArticuloEditEvent) -> Unit
 ): Boolean {
 
-    var isErrorPrecio: Boolean = false
-    var isErrorExistencia: Boolean = false
-    var isErrorMarca: Boolean = false
-    var isErrorDescripcion: Boolean = false
-    var mgsIsErrorPrecio: String = ""
-    var mgsIsErrorExistencia: String = ""
-    var mgsIrrorMarca: String = ""
-    var mgsIrrorDescripcion: String = ""
+    var isErrorPrecio = false
+    var isErrorExistencia = false
+    var isErrorMarca = false
+    var isErrorDescripcion = false
+    var mgsIsErrorPrecio = ""
+    var mgsIsErrorExistencia = ""
+    var mgsIrrorMarca = ""
+    var mgsIrrorDescripcion = ""
 
     if (viewModel.descripcion.value.text.isBlank()) {
         isErrorDescripcion = true
@@ -273,5 +273,5 @@ fun validacion(
         onEvent = {onEvent(it)}
     )
 
-    return isErrorPrecio && isErrorExistencia && isErrorMarca && isErrorDescripcion
+    return !(isErrorPrecio || isErrorExistencia || isErrorMarca || isErrorDescripcion)
 }
