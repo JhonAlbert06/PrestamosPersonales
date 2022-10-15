@@ -36,14 +36,14 @@ class ArticuloEditViewModel @Inject constructor(
     private val _eventFlow = MutableSharedFlow<UiEvent>()
     val eventFlow = _eventFlow.asSharedFlow()
 
-    private var currentUserId: String? = null
+    private var currentUserId: Int? = null
 
     init {
-        savedStateHandle.get<String>("ariticuloId")?.let { articuloid ->
-            if (articuloid.toInt() != -1){
+        savedStateHandle.get<Int>("ariticuloId")?.let { articuloid ->
+            if (articuloid != -1){
                 viewModelScope.launch {
-                    api.getArticulo(articuloid)?.also { articulo ->
-                        currentUserId = articulo.ariticuloId.toString()
+                    api.getArticulo(articuloid.toString())?.also { articulo ->
+                        currentUserId = articulo.ariticuloId
 
                         _descripcion.value = descripcion.value.copy(text = articulo.descripcion)
                         _marca.value = marca.value.copy(text = articulo.marca)
@@ -70,7 +70,7 @@ class ArticuloEditViewModel @Inject constructor(
             }
 
             is ArticuloEditEvent.EnteredExistencia -> {
-                _precio.value = precio.value.copy(text = event.value)
+                _existencia.value = existencia.value.copy(text = event.value)
             }
 
             ArticuloEditEvent.InsertArticulo -> {
