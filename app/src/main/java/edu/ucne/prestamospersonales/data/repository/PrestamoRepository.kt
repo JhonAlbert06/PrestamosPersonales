@@ -8,4 +8,5 @@ interface PrestamoRepository {
     suspend fun delete(prestamo: Prestamo)
     suspend fun getById(id:Int): Prestamo?
     fun getAll(): Flow<List<Prestamo>>
+    /*suspend fun findPersona(id:Int): String?*/
 }
