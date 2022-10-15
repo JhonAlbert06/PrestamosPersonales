@@ -16,7 +16,6 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import edu.ucne.prestamospersonales.R
 import edu.ucne.prestamospersonales.Screen
-import edu.ucne.prestamospersonales.data.local.models.Persona
 import edu.ucne.prestamospersonales.data.local.models.Prestamo
 import edu.ucne.prestamospersonales.ui.components.ItemPrestamo
 
@@ -26,7 +25,6 @@ fun PrestamoHomeScreen(
     viewModel: PrestamoHomeViewModel = hiltViewModel()
 ){
     val state = viewModel.state.value
-
     Scaffold(
         topBar = {
             PrestamoHomeTopBar()
@@ -67,7 +65,7 @@ fun PrestamoHomeContent(
                 ItemPrestamo(
                     prestamo = prestamo ,
                     onEditPrestamo = {onEditPrestamo(prestamo.prestamoId)},
-                    onDeletePrestamo = { onDeletePrestamo(prestamo)}
+                    onDeletePrestamo = { onDeletePrestamo(prestamo)},
                 )
             }
         }
