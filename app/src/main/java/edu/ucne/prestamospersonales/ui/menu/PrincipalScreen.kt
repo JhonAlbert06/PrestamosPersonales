@@ -140,7 +140,7 @@ sealed class Destinos(
     object Articulos : Destinos(
         Icons.Filled.Article,
         "Articulos",
-        Screen.ArticuloScreen.route
+        Screen.HomeArticulo.route
     )
 }
 
