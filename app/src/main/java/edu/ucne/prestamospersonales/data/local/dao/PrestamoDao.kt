@@ -22,4 +22,7 @@ interface PrestamoDao {
 
     @Query("SELECT * FROM prestamos WHERE prestamoId = :id")
     suspend fun getById(id:Int): Prestamo?
+
+   /* @Query("SELECT Personas.nombres FROM Personas JOIN Prestamos ON personaId = Prestamos.personaId WHERE Prestamos.prestamoId= :id")
+    suspend fun findPersona(id:Int): String?*/
 }
