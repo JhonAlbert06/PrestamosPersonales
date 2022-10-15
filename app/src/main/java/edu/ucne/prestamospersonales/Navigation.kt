@@ -6,6 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import edu.ucne.prestamospersonales.ui.articulos.ArticuloEditScreen
 import edu.ucne.prestamospersonales.ui.articulos.ArticuloHomeScreen
 import edu.ucne.prestamospersonales.ui.menu.PrincipalScreen
 import edu.ucne.prestamospersonales.ui.ocupaciones.OcupacionEditScreen
@@ -26,8 +27,21 @@ fun Navigation() {
             PrincipalScreen(navController = navController)
         }
 
-        composable(route = Screen.ArticuloScreen.route) {
+        composable(route = Screen.HomeArticulo.route) {
             ArticuloHomeScreen(navController = navController)
+        }
+        composable(
+            route = Screen.EditArticulo.route,
+            arguments = listOf(
+                navArgument(
+                    name = "ariticuloId"
+                ) {
+                    type = NavType.IntType
+                    defaultValue = -1
+                }
+            )
+        ) {
+            ArticuloEditScreen(navController = navController)
         }
 
 
@@ -82,7 +96,5 @@ fun Navigation() {
         ) {
             PrestamoEditScreen(navController = navController)
         }
-
-
     }
 }
