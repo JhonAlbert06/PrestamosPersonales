@@ -8,8 +8,6 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import edu.ucne.prestamospersonales.data.remote.ArticuloRepository
 import edu.ucne.prestamospersonales.data.remote.dto.ArticulosResponseDto
-import edu.ucne.prestamospersonales.ui.ocupaciones.OcupacionEditViewModel
-import edu.ucne.prestamospersonales.ui.ocupaciones.TextFieldOcupacionState
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
