@@ -36,7 +36,7 @@ fun PrincipalScreen(navController: NavHostController) {
 
     Scaffold(
         scaffoldState = scaffoldState,
-        topBar = { TopBar(scope, scaffoldState) },
+        topBar = { MenuTopBar(scope, scaffoldState) },
         drawerContent = { Menu(navigationItems, navController) }
     ) {
 
@@ -48,7 +48,6 @@ fun Menu(
     navigationItems: List<Destinos>,
     navController: NavHostController
 ) {
-
     Column() {
         Image(
             imageVector = Icons.Filled.Payments,
@@ -61,7 +60,6 @@ fun Menu(
             MenuItem(item = item, navController)
         }
     }
-
 }
 
 @Composable
@@ -93,12 +91,11 @@ fun MenuItem(
             fontWeight = FontWeight.ExtraBold,
             fontSize = 24.sp
         )
-
     }
 }
 
 @Composable
-fun TopBar(
+fun MenuTopBar(
     scope: CoroutineScope,
     scaffoldState: ScaffoldState
 ) {
