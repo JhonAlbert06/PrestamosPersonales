@@ -21,4 +21,8 @@
     <string name="FechaVence">Fecha de Vencimiento</string>
     <string name="Persona">Persona</string>
     <string name="Prestamos">Prestamos</string>
+    <string name="addArticulo">Añadir Articulos</string>
+    <string name="Marca">Marca</string>
+    <string name="Precio">Precio</string>
+    <string name="Existencia">Existencia</string>
 </resources>
