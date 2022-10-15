@@ -25,5 +25,10 @@ sealed class Screen(val route: String){
 
     object PrincipalScreen: Screen("PrincipalScreen")
 
-    object ArticuloScreen: Screen("ArticuloHomeScreen")
+    object HomeArticulo: Screen("ArticuloHomeScreen")
+    object EditArticulo: Screen("ArticuloEditScreen?ariticuloId={ariticuloId}"){
+        fun passId(ariticuloId: String?): String {
+            return "ArticuloEditScreen?ariticuloId=$ariticuloId"
+        }
+    }
 }
