@@ -8,4 +8,5 @@ interface OcupacionRepository {
     suspend fun delete(ocupacion: Ocupacion)
     suspend fun getById(id:Int): Ocupacion?
     fun getAll(): Flow<List<Ocupacion>>
+
 }
