@@ -45,7 +45,6 @@ class OcupacionEditViewModel @Inject constructor(
                     }
                 }
             }
-
         }
     }
 
