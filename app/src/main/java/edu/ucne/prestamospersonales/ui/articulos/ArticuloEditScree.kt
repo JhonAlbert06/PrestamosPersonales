@@ -11,7 +11,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.MutableState
 import androidx.compose.ui.*
 import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.graphics.Color
@@ -26,8 +25,6 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import edu.ucne.prestamospersonales.R
 import edu.ucne.prestamospersonales.ui.components.InputText
-import edu.ucne.prestamospersonales.ui.ocupaciones.OcupacionEditEvent
-import edu.ucne.prestamospersonales.ui.ocupaciones.OcupacionEditViewModel
 import kotlinx.coroutines.flow.collectLatest
 
 
@@ -66,7 +63,7 @@ fun ArticuloEditScreen(
         bottomBar = {
             ArticuloEditBottomBar(
                 onInsertArticulo = { viewModel.onEven(ArticuloEditEvent.InsertArticulo) },
-                isError = viewModel.isError
+                isError = true// viewModel.isError
             )
         }
 
@@ -77,7 +74,7 @@ fun ArticuloEditScreen(
 fun ArticuloEditBottomBar(
     modifier: Modifier = Modifier,
     onInsertArticulo: () -> Unit,
-    isError: MutableState<Boolean>
+    isError: Boolean
 ) {
     OutlinedButton(
         modifier = modifier
@@ -86,7 +83,7 @@ fun ArticuloEditBottomBar(
         shape = CircleShape,
         border = BorderStroke(1.dp, Color.Green),
         onClick = { onInsertArticulo() },
-        enabled = isError.value
+        enabled = isError
 
     ) {
         Icon(
@@ -245,6 +242,14 @@ fun validacion(
     } else if (viewModel.marca.value.text.length in 1..4) {
         isErrorMarca = true
         mgsIrrorMarca = "*La descripcion debe contener minimo(5) Caracteres*"
+    }
+
+    if (viewModel.precio.value.text.isBlank()) {
+        isErrorPrecio = true
+        mgsIsErrorPrecio = "*Campo Obligatorio*"
+    } else if (isNumber(viewModel.precio.value.text)) {
+        isErrorPrecio = true
+        mgsIsErrorPrecio = "*Esto no es un Numero*"
     }
 
     if (viewModel.existencia.value.text.isBlank()) {
