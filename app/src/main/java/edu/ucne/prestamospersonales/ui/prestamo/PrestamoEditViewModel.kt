@@ -41,7 +41,7 @@ class PrestamoEditViewModel @Inject constructor(
 
     private var currentUserId: Int? = null
 
-    private val _eventFlow = MutableSharedFlow<PrestamoEditViewModel.UiEvent>()
+    private val _eventFlow = MutableSharedFlow<UiEvent>()
     val eventFlow = _eventFlow.asSharedFlow()
 
     init {
@@ -108,6 +108,8 @@ class PrestamoEditViewModel @Inject constructor(
                     _eventFlow.emit(UiEvent.SavePrestamo)
                 }
             }
+
+
         }
     }
 
