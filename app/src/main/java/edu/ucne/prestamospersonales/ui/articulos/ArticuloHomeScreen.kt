@@ -47,7 +47,7 @@ fun ArticuloHomeScreen(
                 onDeleteArticulo = { viewModel.onEvent(ArticuloHomeEvent.DeleteArticulo(it.ariticuloId.toString())) },
                 onEditArticulo = {
                     navController.navigate(
-                        route = Screen.EditArticulo.passId(it.toString())
+                        route = Screen.EditArticulo.passId(it)
                     )
                 },
                 articulos = uiState.articulos,
